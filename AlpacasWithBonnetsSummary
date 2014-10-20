@@ -11,3 +11,49 @@ Achievements/Unlockables: After each level you unlock a new bonnet that gives yo
 Types of hat powers:
 	1. Lasers
 	2. 
+	
+	
+	
+	
+Project 2 Milestone 2 Requirements
+
+Tool: 
+	External to Game.
+		The game external data tool should be created and the data from it should be loading into the game. 
+		The game external will be for character creation: Should include one alpaca. 
+	
+	Easy to use. 
+		The external data is easily intergrated with game function.
+	
+	Alters core data
+		Will contain the information necessary to create a new character at the beginning of gameplay. 
+		
+	Data stored in external file
+		This will include character stats for each character. 
+		There should also be a place that will save your data from gameplay, including your character used, 
+		their current hat, and what level you were on. 
+		
+Game: 
+	Minimally functional
+		S: Creation of screens: Start screen, a level scene, game over screen
+		   Basic art work showing up
+		   Alpaca crosses the screen.
+		J: Basic movement functions 
+	
+	Structured for furthur development
+		Obvious room for improvemnt made. 
+		Comments on what is to come
+	
+	Follows coding standards
+	
+	Operates without crashing
+
+Individual: 
+	Your role in this milestone
+	
+	Individual write up on your code section, including your commit messages.
+	
+	Addressed  known bugs and what plans for their termination are.
+	
+	Why changes were made to anything at all from the original plan.
+	
