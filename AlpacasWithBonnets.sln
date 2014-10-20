@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlpacasWithBonnets", "AlpacasWithBonnets\AlpacasWithBonnets\AlpacasWithBonnets.csproj", "{DAA92DD2-7CF4-4F10-94F0-66314458B3C9}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "AlpacasWithBonnetsContent", "AlpacasWithBonnets\AlpacasWithBonnetsContent\AlpacasWithBonnetsContent.contentproj", "{4C0BA2FA-A839-4CC1-952D-A86934C1F9BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAA92DD2-7CF4-4F10-94F0-66314458B3C9}.Debug|x86.ActiveCfg = Debug|x86
+		{DAA92DD2-7CF4-4F10-94F0-66314458B3C9}.Debug|x86.Build.0 = Debug|x86
+		{DAA92DD2-7CF4-4F10-94F0-66314458B3C9}.Release|x86.ActiveCfg = Release|x86
+		{DAA92DD2-7CF4-4F10-94F0-66314458B3C9}.Release|x86.Build.0 = Release|x86
+		{4C0BA2FA-A839-4CC1-952D-A86934C1F9BD}.Debug|x86.ActiveCfg = Debug|x86
+		{4C0BA2FA-A839-4CC1-952D-A86934C1F9BD}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
