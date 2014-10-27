@@ -16,6 +16,16 @@ namespace AlpacasWithBonnets
     /// 
     /// Aplacas!!!!!!!
     /// </summary>
+    /// 
+
+    // Making the different Game States that are needed
+    public enum GameStates
+    {
+        Start,
+        Game,
+        End
+    }
+
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
@@ -83,7 +93,7 @@ namespace AlpacasWithBonnets
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.AliceBlue);
 
             // TODO: Add your drawing code here
 
