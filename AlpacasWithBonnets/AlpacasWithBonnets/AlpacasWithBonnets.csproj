@@ -72,6 +72,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameStates.cs" />
     <Compile Include="Grass.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Platform.cs" />

@@ -21,7 +21,7 @@ namespace AlpacasWithBonnets
     //Zoe McHenry - implementing level & testing
 
     // Making the different Game States that are needed
-    public enum GameStates
+    public enum TheGameStates
     {
         Start,
         Game,
@@ -34,6 +34,10 @@ namespace AlpacasWithBonnets
         SpriteBatch spriteBatch;
         Map map = new Map(100, 10); //For testing
 
+        // TheGameStates variable
+        TheGameStates currentGameState;
+        // GameState object
+        GameStates myGameState = new GameStates();
 
         public Game1()
         {
@@ -50,6 +54,7 @@ namespace AlpacasWithBonnets
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            currentGameState = TheGameStates.Start;
 
             base.Initialize();
         }
@@ -81,10 +86,13 @@ namespace AlpacasWithBonnets
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
-        {
+        {            
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            // Calls the GameStates MenuCheck method
+            myGameState.MenuCheck(currentGameState);
 
             // TODO: Add your update logic here
 
@@ -100,6 +108,10 @@ namespace AlpacasWithBonnets
             GraphicsDevice.Clear(Color.AliceBlue);
             spriteBatch.Begin();
             map.Draw(spriteBatch);
+
+            // Calling the GameStates DrawCheck method
+            myGameState.DrawCheck(currentGameState);
+
             spriteBatch.End();
             // TODO: Add your drawing code here
 
