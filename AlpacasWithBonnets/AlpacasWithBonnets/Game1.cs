@@ -18,6 +18,8 @@ namespace AlpacasWithBonnets
     /// </summary>
     /// 
 
+    //Zoe McHenry - implementing level & testing
+
     // Making the different Game States that are needed
     public enum GameStates
     {
@@ -30,6 +32,8 @@ namespace AlpacasWithBonnets
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Map map = new Map(100, 10); //For testing
+
 
         public Game1()
         {
@@ -58,7 +62,7 @@ namespace AlpacasWithBonnets
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            map.LoadMap("testLevel.txt", Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -94,7 +98,9 @@ namespace AlpacasWithBonnets
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.AliceBlue);
-
+            spriteBatch.Begin();
+            map.Draw(spriteBatch);
+            spriteBatch.End();
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
