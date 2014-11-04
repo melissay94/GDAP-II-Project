@@ -97,7 +97,7 @@ namespace AlpacasWithBonnets
                 this.Exit();
 
             // Calls the GameStates MenuCheck method
-            myGameState.MenuCheck(currentGameState);
+            currentGameState = myGameState.MenuCheck(currentGameState);
 
             // TODO: Add your update logic here
 
@@ -115,7 +115,7 @@ namespace AlpacasWithBonnets
             map.Draw(spriteBatch);
 
             // Calling the GameStates DrawCheck method
-            myGameState.DrawCheck(currentGameState, theFont);
+            myGameState.DrawCheck(currentGameState, theFont, spriteBatch);
 
             spriteBatch.End();
             // TODO: Add your drawing code here
