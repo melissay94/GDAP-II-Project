@@ -38,6 +38,8 @@ namespace AlpacasWithBonnets
         TheGameStates currentGameState;
         // GameState object
         GameStates myGameState = new GameStates();
+        // Sprite Font
+        SpriteFont theFont;
 
         public Game1()
         {
@@ -68,6 +70,9 @@ namespace AlpacasWithBonnets
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             map.LoadMap("testLevel.txt", Content);
+
+            // Identifying the Font
+            theFont = this.Content.Load<SpriteFont>("AvoiderFont");
             // TODO: use this.Content to load your game content here
         }
 
@@ -110,7 +115,7 @@ namespace AlpacasWithBonnets
             map.Draw(spriteBatch);
 
             // Calling the GameStates DrawCheck method
-            myGameState.DrawCheck(currentGameState);
+            myGameState.DrawCheck(currentGameState, theFont);
 
             spriteBatch.End();
             // TODO: Add your drawing code here
