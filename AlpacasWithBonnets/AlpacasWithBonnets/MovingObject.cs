@@ -8,9 +8,10 @@ namespace AlpacasWithBonnets
 {
     // Base class for any object that requires movement such as Player and Enemy
     // Inherit from GameObject class 
-    // Author: Melissa Young
+    // Author: Melissa Young, Zoe McHenry 
 
-    class MovingObject : GameObject
+    //Making this a public class -ZM
+    public class MovingObject : GameObject
     {
         // Each object will have a different speed
        private float objectSpeed;
@@ -32,6 +33,12 @@ namespace AlpacasWithBonnets
         public override void Draw(SpriteBatch objectBatch, Texture2D objectPic)
         {
             base.Draw(objectBatch, objectPic);
+        }
+
+        //Zoe McHenry
+        //Made this to make Character constructor work
+        public MovingObject(int x, int y, int width, int height) : base(x, y, width, height)
+        {
         }
     }
 }

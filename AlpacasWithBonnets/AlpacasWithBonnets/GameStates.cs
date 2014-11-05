@@ -67,8 +67,8 @@ namespace AlpacasWithBonnets
                     string restart = "Potentially press enter to go back to start";
 
                     // Printing the statements
-                    aSpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 10), Color.Black);
+                    SpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);
+                    SpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 10), Color.Black);
 
                     break;
             }

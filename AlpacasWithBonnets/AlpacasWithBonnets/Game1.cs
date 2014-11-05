@@ -30,6 +30,12 @@ namespace AlpacasWithBonnets
 
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        //Zoe McHenry
+        //
+        Character character;
+        CharacterIO characterIO;
+        //
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Map map = new Map(100, 10); //For testing
@@ -72,8 +78,14 @@ namespace AlpacasWithBonnets
             map.LoadMap("testLevel.txt", Content);
 
             // Identifying the Font
-            theFont = this.Content.Load<SpriteFont>("AvoiderFont");
+            //theFont = this.Content.Load<SpriteFont>("AvoiderFont");
             // TODO: use this.Content to load your game content here
+
+            //Zoe McHenry
+            //
+            characterIO = new CharacterIO();
+            //character = characterIO.LoadCharacter("testFile.alpaca");
+            //
         }
 
         /// <summary>

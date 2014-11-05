@@ -8,9 +8,10 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AlpacasWithBonnets
 {
     // Base class for any object to be made in game 
-    // Author: Melissa Young
+    // Author: Melissa Young, Zoe McHenry
 
-    class GameObject
+    //Making this a public class. -ZM
+    public class GameObject
     {
         // Rectangle for objects
         Rectangle objectSquare;
