@@ -53,9 +53,9 @@ namespace AlpacasWithBonnets
                     string instructions = "Use keys to play the game";
 
                     // Printing all of the different statements
-                    aSpriteBatch.DrawString(aSpriteFont, title, new Vector2(10, 10), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, goalOfGame, new Vector2(10, 25), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, instructions, new Vector2(10, 40), Color.Black);
+                    //aSpriteBatch.DrawString(aSpriteFont, title, new Vector2(10, 10), Color.Black);
+                    //aSpriteBatch.DrawString(aSpriteFont, goalOfGame, new Vector2(10, 25), Color.Black);
+                    //aSpriteBatch.DrawString(aSpriteFont, instructions, new Vector2(10, 40), Color.Black);
                     
                     break;
                 case TheGameStates.Game:
@@ -67,8 +67,8 @@ namespace AlpacasWithBonnets
                     string restart = "Potentially press enter to go back to start";
 
                     // Printing the statements
-                    SpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);
-                    SpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 10), Color.Black);
+                    //SpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);
+                    //SpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 10), Color.Black);
 
                     break;
             }
