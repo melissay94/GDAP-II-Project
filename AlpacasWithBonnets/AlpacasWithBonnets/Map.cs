@@ -68,17 +68,29 @@ namespace AlpacasWithBonnets
             {
                 for (int j = 0; j < height; j++)
                 {
-                    if (inputToTile[i, j] == 'S')
+                    if (inputToTile[i, j] == 'S') //Sky
                     {
                         level[i, j] = new Sky(new Vector2(i * SIZE, j * SIZE), contentRef);
                     }
-                    else if (inputToTile[i, j] == 'P')
+                    else if (inputToTile[i, j] == 'P') //Platform
                     {
                         level[i, j] = new Platform(new Vector2(i * SIZE, j * SIZE), contentRef);
                     }
-                    else if (inputToTile[i, j] == 'G')
+                    else if (inputToTile[i, j] == 'G') //Grass
                     {
                         level[i, j] = new Grass(new Vector2(i * SIZE, j * SIZE), contentRef);
+                    }
+                    else if (inputToTile[i, j] == 'D') //Dirt
+                    {
+                        level[i,j] = new Dirt(new Vector2(i* SIZE, j*SIZE), contentRef);
+                    }
+                    else if (inputToTile[i, j] == 'R') //Rock
+                    {
+                        level[i,j] = new Rock(new Vector2(i* SIZE, j*SIZE), contentRef);
+                    }
+                    else if (inputToTile[i, j] == 'Z') //Goal ('G' was already taken)
+                    {
+                        level[i, j] = new Goal(new Vector2(i * SIZE, j * SIZE), contentRef);
                     }
                     else
                     {

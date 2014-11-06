@@ -38,7 +38,7 @@ namespace AlpacasWithBonnets
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Map map = new Map(100, 10); //For testing
+        Map map = new Map(16, 10); //For testing
 
         // TheGameStates variable
         TheGameStates currentGameState;
