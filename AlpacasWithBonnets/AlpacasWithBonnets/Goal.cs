@@ -12,18 +12,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AlpacasWithBonnets
 {
-    
-    class Player : Character
+    public class Goal : Tile
     {
-        /* Playable character class
-         * Set up new character based on external 
-         * Type of hat and attack decided here
-         */
-
-        public void Jump()
+        //Constructor
+        public Goal(Vector2 tileLocation, ContentManager contentRef):base(tileLocation, contentRef)
         {
-            
+            IsPassable = true;
+            TileImage = contentRef.Load<Texture2D>("goal");
         }
-   
     }
 }

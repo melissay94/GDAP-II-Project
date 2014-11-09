@@ -35,6 +35,19 @@ namespace AlpacasWithBonnets
             base.Draw(objectBatch, objectPic);
         }
 
+        // Method for objects to move left and right, direction is 0 for moving Right, direction is 1 for moving Left
+        public void Move(int direction)
+        {
+            if (direction == 0)
+            {
+                ObjectPosX += ObjectSpeed;
+            }
+            if (direction == 1)
+            {
+                ObjectPosX -= ObjectSpeed;
+            }
+        }
+
         //Zoe McHenry
         //Made this to make Character constructor work
         public MovingObject(int x, int y, int width, int height) : base(x, y, width, height)

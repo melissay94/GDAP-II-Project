@@ -14,9 +14,11 @@ namespace AlpacasWithBonnets
 {
     class GameStates
     {
-        // Sara Nuffer
+        // Sara Nuffer, James Borger
         // This class will have all of the information that the Game1 class will need to be able to work with the game states
-    
+
+        // Makes a keyboard state which can be used to tell what keys are being pressed
+        KeyboardState Key;
         // This method changes the menus depending on the game state
         public TheGameStates MenuCheck(TheGameStates currentGameState) // Would have to take in a key pressed
         {
@@ -71,6 +73,33 @@ namespace AlpacasWithBonnets
                     aSpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 10), Color.Black);
 
                     break;
+            }
+        }
+
+        // Handles Keyboard Input from the player
+        //For Movement and attacking
+        public void HandleInput()
+        {
+            Key = Keyboard.GetState();
+            if (Key.IsKeyDown(Keys.W))
+            {
+                // Add Jump code here
+            }
+            if (Key.IsKeyDown(Keys.A))
+            {
+                // Movement to the Left here
+            }
+            if (Key.IsKeyDown(Keys.D))
+            {
+                // Movement to the Right here
+            }
+            if (Key.IsKeyDown(Keys.Space))
+            {
+                // attack Code here
+            }
+            if (Key.IsKeyDown(Keys.Escape))
+            {
+                // Pause the game
             }
         }
     }
