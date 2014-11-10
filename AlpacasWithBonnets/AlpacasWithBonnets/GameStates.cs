@@ -101,6 +101,10 @@ namespace AlpacasWithBonnets
             {
                 // Pause the game
             }
+            if (Key.IsKeyDown(Keys.Enter))
+            {
+
+            }
         }
     }
 }

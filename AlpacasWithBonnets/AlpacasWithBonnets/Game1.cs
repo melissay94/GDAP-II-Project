@@ -46,11 +46,16 @@ namespace AlpacasWithBonnets
         GameStates myGameState = new GameStates();
         // Sprite Font
         SpriteFont theFont;
+        // Keyboard States
+        KeyboardState keyState;
+        KeyboardState kbState;
+        KeyboardState previouskbState;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            
         }
 
         /// <summary>
@@ -78,7 +83,7 @@ namespace AlpacasWithBonnets
             map.LoadMap("testLevel.txt", Content);
 
             // Identifying the Font
-            //theFont = this.Content.Load<SpriteFont>("AvoiderFont");
+            theFont = this.Content.Load<SpriteFont>("AvoiderFont");
             // TODO: use this.Content to load your game content here
 
             //Zoe McHenry
@@ -109,9 +114,28 @@ namespace AlpacasWithBonnets
                 this.Exit();
 
             // Calls the GameStates MenuCheck method
-            currentGameState = myGameState.MenuCheck(currentGameState);
+            //currentGameState = myGameState.MenuCheck(currentGameState);
 
-            // TODO: Add your update logic here
+            switch (currentGameState)
+            {
+                case TheGameStates.Start:
+                    if (keyState.IsKeyDown(Keys.Enter))
+                    {
+                        currentGameState = TheGameStates.Game;
+                    }
+                    break;
+                case TheGameStates.Game:
+                    previouskbState = kbState;
+                    kbState = Keyboard.GetState();
+
+                    break;
+                case TheGameStates.End:
+                    if (keyState.IsKeyDown(Keys.Enter))
+                    {
+                        currentGameState = TheGameStates.Start;
+                    }
+                    break;
+            }
 
             base.Update(gameTime);
         }
