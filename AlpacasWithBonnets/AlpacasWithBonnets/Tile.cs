@@ -21,6 +21,7 @@ namespace AlpacasWithBonnets
         private Vector2 tileLocation;
         private Texture2D tileImage;
         private bool isPassable;
+        private Rectangle tileRectangle;
 
         //Properties
         public Vector2 TileLocation

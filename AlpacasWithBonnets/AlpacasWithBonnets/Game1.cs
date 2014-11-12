@@ -26,12 +26,6 @@ namespace AlpacasWithBonnets
         End  // Show final score 
     }
 
-    public enum CharacterState
-    {
-        Walking, 
-        Jumping
-    }
-
 
     public class Game1 : Microsoft.Xna.Framework.Game
     {
@@ -45,7 +39,6 @@ namespace AlpacasWithBonnets
 
         // Current game state variable based on TheGameStates
         TheGameStates currentGameState;
-        CharacterState currentCharState;
 
         // GameState object
         GameStates myGameState = new GameStates();
@@ -61,6 +54,12 @@ namespace AlpacasWithBonnets
         Texture2D walk1;
         Texture2D walk2;
         Texture2D walk3;
+
+        // Jump attributes
+        bool jumping;
+        float startY;
+        float startX;
+        float jumpspeed = 0;
 
         public Game1()
         {
@@ -79,7 +78,7 @@ namespace AlpacasWithBonnets
         {
             // TODO: Add your initialization logic here
             currentGameState = TheGameStates.Start;
-            currentCharState = CharacterState.Walking;
+            jumping = false;
 
             base.Initialize();
         }
@@ -102,6 +101,8 @@ namespace AlpacasWithBonnets
             characterIO = new CharacterIO();
             //character = characterIO.LoadCharacter("testFile.alpaca");
             character = new Character(0, 250, 100, 100, 100, 50);
+            startY = character.ObjectPosY;
+            startX = character.ObjectPosX;
 
             // Load character walk cycle images
             walk1 = this.Content.Load<Texture2D>("walk1");
@@ -141,6 +142,36 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 myGameState.HandleInput(gameTime, keyState, character);
+                if (jumping && keyState.IsKeyDown(Keys.A))
+                {
+                    character.ObjectPosY += jumpspeed;
+                    character.ObjectPosX -= Math.Abs(jumpspeed);
+                    jumpspeed += 1;
+                    if (character.ObjectPosY > startY)
+                    {
+                        character.ObjectPosY = startY;
+                        jumping = false;
+                    }
+                }
+                else if (jumping)
+                {
+                    character.ObjectPosY += jumpspeed;
+                    character.ObjectPosX += Math.Abs(jumpspeed);
+                    jumpspeed += 1;
+                    if (character.ObjectPosY > startY)
+                    {
+                        character.ObjectPosY = startY;
+                        jumping = false;
+                    }
+                }
+                else
+                {
+                    if (keyState.IsKeyDown(Keys.W))
+                    {
+                        jumping = true;
+                        jumpspeed = -14;
+                    }
+                }
             }
           
 

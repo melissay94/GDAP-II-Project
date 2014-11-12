@@ -21,6 +21,10 @@ namespace AlpacasWithBonnets
         // Sara Nuffer, James Borger
         // This class will have all of the information that the Game1 class will need to be able to work with the game states
 
+        bool jumping;
+        float startY;
+        float jumpSpeed = 0;
+
         // This method changes what the game draws depending on the game state
         public void DrawCheck(TheGameStates aGameState, SpriteFont aSpriteFont, SpriteBatch aSpriteBatch) // Also needs the name of the spritefont
         {
@@ -56,10 +60,6 @@ namespace AlpacasWithBonnets
         //For Movement and attacking
         public void HandleInput(GameTime gameTime, KeyboardState keyState, Character newCharacter)
         {
-            if (keyState.IsKeyDown(Keys.W))
-            {
-                // Add Jump code here
-            }
             if (keyState.IsKeyDown(Keys.A))
             {
                 newCharacter.ObjectPosX -= (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -78,13 +78,6 @@ namespace AlpacasWithBonnets
             }
         }
 
-        protected void Jump(CharacterState currentMoveState, Character newCharacter)
-        {
-            if (currentMoveState != CharacterState.Jumping)
-            {
-                currentMoveState = CharacterState.Jumping;
-              
-            }
-        }
+
     }
 }
