@@ -134,6 +134,7 @@ namespace AlpacasWithBonnets
             previouskbState = keyState;
             keyState = Keyboard.GetState();
 
+            // Use enter key to change from the start menu to the game screen
             if (currentGameState == TheGameStates.Start && SingleKeyPress(Keys.Enter))
             {
                 currentGameState = TheGameStates.Game;
@@ -142,6 +143,9 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 myGameState.HandleInput(gameTime, keyState, character);
+                CollisionDetection(character);
+
+                // Create jump action based on character direction
                 if (jumping && keyState.IsKeyDown(Keys.A))
                 {
                     character.ObjectPosY += jumpspeed;
@@ -178,6 +182,44 @@ namespace AlpacasWithBonnets
             base.Update(gameTime);
         }
 
+        // Detection method for if the character has reached the edge of the screen
+        public void CollisionDetection(Character newCharacter)
+        {
+            if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
+            {
+                character.ObjectPosX = GraphicsDevice.Viewport.Width - character.ObjectSquare.Width;
+            }
+            if (character.ObjectPosX <= 0)
+            {
+                character.ObjectPosX = 1;
+            }
+
+            // Collision detection between the character and the map objects
+            foreach (Tile gameTile in map.NewMap)
+            {
+                if (!gameTile.IsPassable)
+                {
+                    if (character.ObjectPosX + character.ObjectSquare.Width >= gameTile.TileRectangle.Left)
+                    {
+                        character.ObjectPosX = gameTile.TileRectangle.Left - character.ObjectSquare.Width;
+                    }
+                    if (character.ObjectPosX <= gameTile.TileRectangle.Right)
+                    {
+                        character.ObjectPosX = gameTile.TileRectangle.Right + 1;
+                    }
+                    if (character.ObjectPosY <= gameTile.TileRectangle.Bottom)
+                    {
+                       character.ObjectPosY = gameTile.TileRectangle.Bottom + 1;
+                    }
+                    if (character.ObjectPosY + character.ObjectSquare.Height >= gameTile.TileRectangle.Top)
+                    {
+                        character.ObjectPosY = gameTile.TileRectangle.Top - character.ObjectSquare.Height;
+                    }
+                }
+            }
+        }
+
+        // Take in a single key to check if its been hit
         public Boolean SingleKeyPress(Keys keyPress)
         {
             if (previouskbState != null && previouskbState.IsKeyDown(keyPress))

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AlpacasWithBonnets
 {
@@ -23,6 +24,7 @@ namespace AlpacasWithBonnets
 
         private int health, power;
         private AlpacaType alpacaType;
+
         public int Health
         {
             get { return health; }
@@ -42,6 +44,18 @@ namespace AlpacasWithBonnets
         {
             this.health = health;
             this.power = power;
+        }
+
+        public bool Collision(Tile worldTile)
+        {
+            if (worldTile.TileRectangle.Intersects(this.ObjectSquare))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch objectBatch, Microsoft.Xna.Framework.Graphics.Texture2D objectPic)

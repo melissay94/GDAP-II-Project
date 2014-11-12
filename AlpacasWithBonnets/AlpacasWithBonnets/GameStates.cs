@@ -21,10 +21,6 @@ namespace AlpacasWithBonnets
         // Sara Nuffer, James Borger
         // This class will have all of the information that the Game1 class will need to be able to work with the game states
 
-        bool jumping;
-        float startY;
-        float jumpSpeed = 0;
-
         // This method changes what the game draws depending on the game state
         public void DrawCheck(TheGameStates aGameState, SpriteFont aSpriteFont, SpriteBatch aSpriteBatch) // Also needs the name of the spritefont
         {

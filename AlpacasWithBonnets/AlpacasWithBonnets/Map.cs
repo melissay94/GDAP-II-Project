@@ -29,6 +29,11 @@ namespace AlpacasWithBonnets
             this.height = height;
         }
 
+        public Tile[,] NewMap
+        {
+            get { return level; }
+        }
+
         //Methods
         public void LoadMap(string levelFilePath, ContentManager contentRef)
         {

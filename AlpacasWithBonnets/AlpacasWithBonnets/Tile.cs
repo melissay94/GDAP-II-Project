@@ -42,6 +42,12 @@ namespace AlpacasWithBonnets
             set { this.isPassable = value; }
         }
 
+        public Rectangle TileRectangle
+        {
+            get { return tileRectangle; }
+            set { this.tileRectangle = value; }
+        }
+
         //Big constructor
         //Has all possible inputs
         public Tile(Vector2 tileLocation, Texture2D tileImage, bool isPassable)
@@ -56,12 +62,13 @@ namespace AlpacasWithBonnets
         public Tile(Vector2 tileLocation, ContentManager contentRef)
         {
             this.TileLocation = tileLocation;
+            tileRectangle = new Rectangle((int)tileLocation.X, (int)tileLocation.Y, SIZE, SIZE);
         }
 
         //Method
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(tileImage, new Rectangle((int)tileLocation.X, (int)tileLocation.Y, SIZE, SIZE), Color.White);
+            spriteBatch.Draw(tileImage, tileRectangle, Color.White);
         }
     }
 }
