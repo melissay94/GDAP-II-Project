@@ -39,6 +39,18 @@ namespace AlpacasWithBonnets
                     
                     break;
 
+                case TheGameStates.Pause:
+                    //Make the statements for the pause
+                    string pause = "Pause Game";
+                    string goBack = "Press Enter to go back to Game";
+                    string startMenu = "Press S to go back to Start";
+
+                    // Print the statements to the menu
+                    aSpriteBatch.DrawString(aSpriteFont, pause, new Vector2(10, 10), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, goBack, new Vector2(10, 25), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, startMenu, new Vector2(10, 40), Color.Black);
+                    break;
+
                 case TheGameStates.End:
                     // Making the statements to print
                     string gameOver = "Game Over";
@@ -46,7 +58,7 @@ namespace AlpacasWithBonnets
 
                     //Printing the statements
                     aSpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 10), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 25), Color.Black);
 
                     break;
             }

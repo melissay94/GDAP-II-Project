@@ -23,6 +23,7 @@ namespace AlpacasWithBonnets
     {
         Start, // Show title and instructions
         Game, //  levels of gameplay
+        Pause, // Pause the game 
         End  // Show final score 
     }
 
@@ -35,6 +36,8 @@ namespace AlpacasWithBonnets
         //Zoe McHenry
         Character character;
         CharacterIO characterIO;
+        GameObject goal;
+        GameObject block;
         Map map = new Map(16, 10); //For testing
 
         // Current game state variable based on TheGameStates
@@ -50,16 +53,20 @@ namespace AlpacasWithBonnets
         KeyboardState keyState;
         KeyboardState previouskbState;
 
-        // Character walk textures 
+        // Alpaca walk
         Texture2D walk1;
-        Texture2D walk2;
-        Texture2D walk3;
+        Texture2D walkCycle;
+        Point frameSize = new Point(50, 50);
+        Point currentFrame = new Point(0, 250);
+        Point sheetSize = new Point(1, 3);
 
         // Jump attributes
         bool jumping;
         float startY;
         float startX;
         float jumpspeed = 0;
+
+        Texture2D test;
 
         public Game1()
         {
@@ -76,9 +83,10 @@ namespace AlpacasWithBonnets
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
             currentGameState = TheGameStates.Start;
             jumping = false;
+
+          
 
             base.Initialize();
         }
@@ -101,13 +109,19 @@ namespace AlpacasWithBonnets
             characterIO = new CharacterIO();
             //character = characterIO.LoadCharacter("testFile.alpaca");
             character = new Character(0, 250, 100, 100, 100, 50);
+
+            // Temporary gameObject to collide with in order to get to the end of the game
+            goal = new GameObject(GraphicsDevice.Viewport.Width - 50, 250, 50, 50);
+            block = new GameObject(150, 250, 50, 50);
+
             startY = character.ObjectPosY;
             startX = character.ObjectPosX;
 
             // Load character walk cycle images
             walk1 = this.Content.Load<Texture2D>("walk1");
-            walk2 = this.Content.Load<Texture2D>("walk2");
-            walk3 = this.Content.Load<Texture2D>("walk3");
+            test = this.Content.Load<Texture2D>("sky");
+            walkCycle = this.Content.Load<Texture2D>("walkcycle");
+          
      
         }
 
@@ -144,6 +158,8 @@ namespace AlpacasWithBonnets
             {
                 myGameState.HandleInput(gameTime, keyState, character);
                 CollisionDetection(character);
+               // character.ObjectCollide(block);
+
 
                 // Create jump action based on character direction
                 if (jumping && keyState.IsKeyDown(Keys.A))
@@ -157,10 +173,20 @@ namespace AlpacasWithBonnets
                         jumping = false;
                     }
                 }
-                else if (jumping)
+                else if (jumping && keyState.IsKeyDown(Keys.D))
                 {
                     character.ObjectPosY += jumpspeed;
                     character.ObjectPosX += Math.Abs(jumpspeed);
+                    jumpspeed += 1;
+                    if (character.ObjectPosY > startY)
+                    {
+                        character.ObjectPosY = startY;
+                        jumping = false;
+                    }
+                }
+                else if (jumping)
+                {
+                    character.ObjectPosY += jumpspeed;
                     jumpspeed += 1;
                     if (character.ObjectPosY > startY)
                     {
@@ -177,7 +203,26 @@ namespace AlpacasWithBonnets
                     }
                 }
             }
-          
+
+            if (currentGameState == TheGameStates.Game && SingleKeyPress(Keys.P))
+            {
+                currentGameState = TheGameStates.Pause;
+            }
+
+            if (currentGameState == TheGameStates.Pause && SingleKeyPress(Keys.Enter))
+            {
+                currentGameState = TheGameStates.Game;
+            }
+
+            if (currentGameState == TheGameStates.Pause && SingleKeyPress(Keys.S))
+            {
+                currentGameState = TheGameStates.Start;
+            }
+
+            if (currentGameState == TheGameStates.End && SingleKeyPress(Keys.Enter))
+            {
+                currentGameState = TheGameStates.Start;
+            }
 
             base.Update(gameTime);
         }
@@ -193,29 +238,9 @@ namespace AlpacasWithBonnets
             {
                 character.ObjectPosX = 1;
             }
-
-            // Collision detection between the character and the map objects
-            foreach (Tile gameTile in map.NewMap)
+            if (character.ObjectSquare.Intersects(goal.ObjectSquare))
             {
-                if (!gameTile.IsPassable)
-                {
-                    if (character.ObjectPosX + character.ObjectSquare.Width >= gameTile.TileRectangle.Left)
-                    {
-                        character.ObjectPosX = gameTile.TileRectangle.Left - character.ObjectSquare.Width;
-                    }
-                    if (character.ObjectPosX <= gameTile.TileRectangle.Right)
-                    {
-                        character.ObjectPosX = gameTile.TileRectangle.Right + 1;
-                    }
-                    if (character.ObjectPosY <= gameTile.TileRectangle.Bottom)
-                    {
-                       character.ObjectPosY = gameTile.TileRectangle.Bottom + 1;
-                    }
-                    if (character.ObjectPosY + character.ObjectSquare.Height >= gameTile.TileRectangle.Top)
-                    {
-                        character.ObjectPosY = gameTile.TileRectangle.Top - character.ObjectSquare.Height;
-                    }
-                }
+                currentGameState = TheGameStates.End;
             }
         }
 
@@ -238,7 +263,6 @@ namespace AlpacasWithBonnets
         {
             GraphicsDevice.Clear(Color.AliceBlue);
             spriteBatch.Begin();
-            map.Draw(spriteBatch);
 
             // Calling the GameStates DrawCheck method
             myGameState.DrawCheck(currentGameState, theFont, spriteBatch);
@@ -246,13 +270,13 @@ namespace AlpacasWithBonnets
             // Alpaca drawing
             if (currentGameState == TheGameStates.Game)
             {
+                map.Draw(spriteBatch);
                 character.Draw(spriteBatch, walk1);
+                // block.Draw(spriteBatch, test);
             }
-
-            spriteBatch.End();
-           
-
-            base.Draw(gameTime);
-        }
+                spriteBatch.End();
+                base.Draw(gameTime);
+            }
+        
     }
 }
