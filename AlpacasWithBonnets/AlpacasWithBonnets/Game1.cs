@@ -19,37 +19,48 @@ namespace AlpacasWithBonnets
     /// 
 
     //Zoe McHenry - implementing level & testing
-
-    // Making the different Game States that are needed
     public enum TheGameStates
     {
-        Start,
-        Game,
-        End
+        Start, // Show title and instructions
+        Game, //  levels of gameplay
+        End  // Show final score 
     }
+
+    public enum CharacterState
+    {
+        Walking, 
+        Jumping
+    }
+
 
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        GraphicsDeviceManager graphics;
+        SpriteBatch spriteBatch; 
+
         //Zoe McHenry
-        //
         Character character;
         CharacterIO characterIO;
-        //
-
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
         Map map = new Map(16, 10); //For testing
 
-        // TheGameStates variable
+        // Current game state variable based on TheGameStates
         TheGameStates currentGameState;
+        CharacterState currentCharState;
+
         // GameState object
         GameStates myGameState = new GameStates();
+
         // Sprite Font
         SpriteFont theFont;
+
         // Keyboard States
         KeyboardState keyState;
-        KeyboardState kbState;
         KeyboardState previouskbState;
+
+        // Character walk textures 
+        Texture2D walk1;
+        Texture2D walk2;
+        Texture2D walk3;
 
         public Game1()
         {
@@ -68,6 +79,7 @@ namespace AlpacasWithBonnets
         {
             // TODO: Add your initialization logic here
             currentGameState = TheGameStates.Start;
+            currentCharState = CharacterState.Walking;
 
             base.Initialize();
         }
@@ -84,13 +96,18 @@ namespace AlpacasWithBonnets
 
             // Identifying the Font
             theFont = this.Content.Load<SpriteFont>("AvoiderFont");
-            // TODO: use this.Content to load your game content here
 
             //Zoe McHenry
             //
             characterIO = new CharacterIO();
             //character = characterIO.LoadCharacter("testFile.alpaca");
-            //
+            character = new Character(0, 250, 100, 100, 100, 50);
+
+            // Load character walk cycle images
+            walk1 = this.Content.Load<Texture2D>("walk1");
+            walk2 = this.Content.Load<Texture2D>("walk2");
+            walk3 = this.Content.Load<Texture2D>("walk3");
+     
         }
 
         /// <summary>
@@ -113,31 +130,31 @@ namespace AlpacasWithBonnets
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // Calls the GameStates MenuCheck method
-            //currentGameState = myGameState.MenuCheck(currentGameState);
+            previouskbState = keyState;
+            keyState = Keyboard.GetState();
 
-            switch (currentGameState)
+            if (currentGameState == TheGameStates.Start && SingleKeyPress(Keys.Enter))
             {
-                case TheGameStates.Start:
-                    if (keyState.IsKeyDown(Keys.Enter))
-                    {
-                        currentGameState = TheGameStates.Game;
-                    }
-                    break;
-                case TheGameStates.Game:
-                    previouskbState = kbState;
-                    kbState = Keyboard.GetState();
-
-                    break;
-                case TheGameStates.End:
-                    if (keyState.IsKeyDown(Keys.Enter))
-                    {
-                        currentGameState = TheGameStates.Start;
-                    }
-                    break;
+                currentGameState = TheGameStates.Game;
             }
 
+            if (currentGameState == TheGameStates.Game)
+            {
+                myGameState.HandleInput(gameTime, keyState, character);
+            }
+          
+
             base.Update(gameTime);
+        }
+
+        public Boolean SingleKeyPress(Keys keyPress)
+        {
+            if (previouskbState != null && previouskbState.IsKeyDown(keyPress))
+            {
+                return false;
+            }
+
+            return keyState.IsKeyDown(keyPress);
         }
 
         /// <summary>
@@ -153,8 +170,14 @@ namespace AlpacasWithBonnets
             // Calling the GameStates DrawCheck method
             myGameState.DrawCheck(currentGameState, theFont, spriteBatch);
 
+            // Alpaca drawing
+            if (currentGameState == TheGameStates.Game)
+            {
+                character.Draw(spriteBatch, walk1);
+            }
+
             spriteBatch.End();
-            // TODO: Add your drawing code here
+           
 
             base.Draw(gameTime);
         }

@@ -43,5 +43,10 @@ namespace AlpacasWithBonnets
             this.health = health;
             this.power = power;
         }
+
+        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch objectBatch, Microsoft.Xna.Framework.Graphics.Texture2D objectPic)
+        {
+            base.Draw(objectBatch, objectPic);
+        }
     }
 }

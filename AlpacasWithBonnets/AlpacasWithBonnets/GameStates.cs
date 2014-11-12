@@ -12,36 +12,14 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AlpacasWithBonnets
 {
+
+    // Making the different Game States that are needed
+  
+
     class GameStates
     {
         // Sara Nuffer, James Borger
         // This class will have all of the information that the Game1 class will need to be able to work with the game states
-
-        // Makes a keyboard state which can be used to tell what keys are being pressed
-        KeyboardState Key;
-        // This method changes the menus depending on the game state
-        public TheGameStates MenuCheck(TheGameStates currentGameState) // Would have to take in a key pressed
-        {
-            TheGameStates returningGameState = TheGameStates.Start;
-            switch (currentGameState)
-            {
-                case TheGameStates.Start:
-
-                    returningGameState = TheGameStates.Game;
-                    return returningGameState;
-                case TheGameStates.Game:
-
-                    returningGameState = TheGameStates.End;
-                    return returningGameState;
-                case TheGameStates.End:
-
-                    returningGameState = TheGameStates.Start;
-                    return returningGameState;
-            }
-
-            // returns Start if it does not go through the switch for whatever reason
-            return returningGameState;
-        }
 
         // This method changes what the game draws depending on the game state
         public void DrawCheck(TheGameStates aGameState, SpriteFont aSpriteFont, SpriteBatch aSpriteBatch) // Also needs the name of the spritefont
@@ -60,9 +38,7 @@ namespace AlpacasWithBonnets
                     aSpriteBatch.DrawString(aSpriteFont, instructions, new Vector2(10, 40), Color.Black);
                     
                     break;
-                case TheGameStates.Game:
 
-                    break;
                 case TheGameStates.End:
                     // Making the statements to print
                     string gameOver = "Game Over";
@@ -78,32 +54,36 @@ namespace AlpacasWithBonnets
 
         // Handles Keyboard Input from the player
         //For Movement and attacking
-        public void HandleInput()
+        public void HandleInput(GameTime gameTime, KeyboardState keyState, Character newCharacter)
         {
-            Key = Keyboard.GetState();
-            if (Key.IsKeyDown(Keys.W))
+            if (keyState.IsKeyDown(Keys.W))
             {
                 // Add Jump code here
             }
-            if (Key.IsKeyDown(Keys.A))
+            if (keyState.IsKeyDown(Keys.A))
             {
-                // Movement to the Left here
+                newCharacter.ObjectPosX -= (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Key.IsKeyDown(Keys.D))
+            if (keyState.IsKeyDown(Keys.D))
             {
-                // Movement to the Right here
+                newCharacter.ObjectPosX += (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
-            if (Key.IsKeyDown(Keys.Space))
+            if (keyState.IsKeyDown(Keys.Space))
             {
                 // attack Code here
             }
-            if (Key.IsKeyDown(Keys.Escape))
+            if (keyState.IsKeyDown(Keys.Escape))
             {
                 // Pause the game
             }
-            if (Key.IsKeyDown(Keys.Enter))
-            {
+        }
 
+        protected void Jump(CharacterState currentMoveState, Character newCharacter)
+        {
+            if (currentMoveState != CharacterState.Jumping)
+            {
+                currentMoveState = CharacterState.Jumping;
+              
             }
         }
     }

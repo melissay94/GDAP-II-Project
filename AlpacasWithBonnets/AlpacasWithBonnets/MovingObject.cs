@@ -14,7 +14,7 @@ namespace AlpacasWithBonnets
     public class MovingObject : GameObject
     {
         // Each object will have a different speed
-       private float objectSpeed;
+        float objectSpeed = 150.0f;
 
         // Constructor 
         public MovingObject(float objectSpeed, int x, int y, int width, int height)
