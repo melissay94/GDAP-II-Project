@@ -114,8 +114,8 @@ namespace AlpacasWithBonnets
             character = new Character(0, 250, 100, 100, 100, 50);
 
             // Temporary gameObject to collide with in order to get to the end of the game
-            goal = new GameObject(GraphicsDevice.Viewport.Width - 50, 250, 50, 50);
-            block = new GameObject(150, 250, 50, 50);
+            //goal = new GameObject(GraphicsDevice.Viewport.Width - 50, 250, 50, 50);
+            //block = new GameObject(150, 250, 50, 50);
 
             bolt = new MovingObject((int)character.ObjectPosX + (int)character.ObjectSquare.Width,
                 (int)character.ObjectPosY + (int)character.ObjectSquare.Height/2, 10, 20);

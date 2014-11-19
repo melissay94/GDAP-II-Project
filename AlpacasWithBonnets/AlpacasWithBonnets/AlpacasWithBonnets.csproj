@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Character.cs" />
     <Compile Include="CharacterIO.cs" />
+    <Compile Include="Collectable.cs" />
     <Compile Include="Dirt.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="GameStates.cs" />

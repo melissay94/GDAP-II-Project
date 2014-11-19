@@ -7,12 +7,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AlpacasWithBonnets
 {
+    // The alpaca type
     public enum AlpacaType
     {
         Warrior,
         Wizard,
         Dunce
     }
+
     public class Character : MovingObject
     {
         /* Class for base methods that character and enemy will share

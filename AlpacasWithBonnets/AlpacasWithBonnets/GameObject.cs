@@ -11,10 +11,11 @@ namespace AlpacasWithBonnets
     // Author: Melissa Young, Zoe McHenry
 
     //Making this a public class. -ZM
-    public class GameObject
+    abstract public class GameObject
     {
         // Rectangle for objects
-        Rectangle objectSquare;
+        private Rectangle objectSquare;
+        // Postition
         private float x;
         private float y;
 

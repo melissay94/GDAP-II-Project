@@ -14,7 +14,9 @@ namespace AlpacasWithBonnets
     public class MovingObject : GameObject
     {
         // Each object will have a different speed
-        float objectSpeed = 150.0f;
+        private float objectSpeed = 150.0f;
+        // Direction
+        private int direction;
 
         // Constructor 
         public MovingObject(float objectSpeed, int x, int y, int width, int height)
@@ -27,6 +29,11 @@ namespace AlpacasWithBonnets
         public float ObjectSpeed
         {
             get { return objectSpeed; }
+        }
+        // Property for the direction
+        public int Direction
+        {
+            get { return direction; }
         }
 
         // Inherited draw method
