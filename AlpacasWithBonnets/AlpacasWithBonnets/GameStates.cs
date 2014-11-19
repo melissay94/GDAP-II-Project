@@ -66,7 +66,7 @@ namespace AlpacasWithBonnets
 
         // Handles Keyboard Input from the player
         //For Movement and attacking
-        public void HandleInput(GameTime gameTime, KeyboardState keyState, Character newCharacter)
+        public void HandleInput(GameTime gameTime, KeyboardState keyState, Character newCharacter, GameObject ammo)
         {
             if (keyState.IsKeyDown(Keys.A))
             {
@@ -78,11 +78,7 @@ namespace AlpacasWithBonnets
             }
             if (keyState.IsKeyDown(Keys.Space))
             {
-                // attack Code here
-            }
-            if (keyState.IsKeyDown(Keys.Escape))
-            {
-                // Pause the game
+                
             }
         }
 

@@ -38,6 +38,7 @@ namespace AlpacasWithBonnets
         CharacterIO characterIO;
         GameObject goal;
         GameObject block;
+        MovingObject bolt;
         Map map = new Map(16, 10); //For testing
 
         // Current game state variable based on TheGameStates
@@ -67,6 +68,9 @@ namespace AlpacasWithBonnets
         float jumpspeed = 0;
 
         Texture2D test;
+        Texture2D boltImage;
+
+        Vector2 spritePosition;
 
         public Game1()
         {
@@ -85,7 +89,6 @@ namespace AlpacasWithBonnets
         {
             currentGameState = TheGameStates.Start;
             jumping = false;
-
           
 
             base.Initialize();
@@ -114,6 +117,10 @@ namespace AlpacasWithBonnets
             goal = new GameObject(GraphicsDevice.Viewport.Width - 50, 250, 50, 50);
             block = new GameObject(150, 250, 50, 50);
 
+            bolt = new MovingObject((int)character.ObjectPosX + (int)character.ObjectSquare.Width,
+                (int)character.ObjectPosY + (int)character.ObjectSquare.Height/2, 10, 20);
+            spritePosition = new Vector2(640, 450);
+
             startY = character.ObjectPosY;
             startX = character.ObjectPosX;
 
@@ -121,6 +128,7 @@ namespace AlpacasWithBonnets
             walk1 = this.Content.Load<Texture2D>("walk1");
             test = this.Content.Load<Texture2D>("sky");
             walkCycle = this.Content.Load<Texture2D>("walkcycle");
+            boltImage = this.Content.Load<Texture2D>("bolt");
           
      
         }
@@ -156,10 +164,19 @@ namespace AlpacasWithBonnets
 
             if (currentGameState == TheGameStates.Game)
             {
-                myGameState.HandleInput(gameTime, keyState, character);
-                CollisionDetection(character);
+                myGameState.HandleInput(gameTime, keyState, character, bolt);
+                CollisionDetection();
                // character.ObjectCollide(block);
 
+                if (SingleKeyPress(Keys.Space))
+                {
+                    while (bolt.ObjectPosX + bolt.ObjectSquare.Width <= 200)
+                    {
+                        bolt.ObjectPosX += (bolt.ObjectSpeed * 2 * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                    }
+                    bolt.ObjectPosX = character.ObjectPosX + character.ObjectSquare.Width;
+                    bolt.ObjectPosY = character.ObjectPosY + character.ObjectSquare.Height / 2;
+                }
 
                 // Create jump action based on character direction
                 if (jumping && keyState.IsKeyDown(Keys.A))
@@ -228,7 +245,7 @@ namespace AlpacasWithBonnets
         }
 
         // Detection method for if the character has reached the edge of the screen
-        public void CollisionDetection(Character newCharacter)
+        public void CollisionDetection()
         {
             if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
             {
@@ -255,6 +272,12 @@ namespace AlpacasWithBonnets
             return keyState.IsKeyDown(keyPress);
         }
 
+        public void UpdateAmmo()
+        {
+            bolt.ObjectPosX += bolt.ObjectSpeed * 2;
+           
+        }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -271,8 +294,9 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 map.Draw(spriteBatch);
+                bolt.Draw(spriteBatch, boltImage);
                 character.Draw(spriteBatch, walk1);
-                // block.Draw(spriteBatch, test);
+                //block.Draw(spriteBatch, test);
             }
                 spriteBatch.End();
                 base.Draw(gameTime);

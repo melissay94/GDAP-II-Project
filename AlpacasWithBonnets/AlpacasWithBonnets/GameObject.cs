@@ -46,7 +46,7 @@ namespace AlpacasWithBonnets
         // Base draw method for the objects 
         public virtual void Draw(SpriteBatch objectBatch, Texture2D objectPic)
         {
-            objectBatch.Draw(objectPic, objectSquare, Color.White);
+            objectBatch.Draw(objectPic, ObjectSquare, Color.White);
         }
     }
 }
