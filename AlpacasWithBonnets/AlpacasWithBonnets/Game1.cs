@@ -111,7 +111,8 @@ namespace AlpacasWithBonnets
             //
             characterIO = new CharacterIO();
             //character = characterIO.LoadCharacter("testFile.alpaca");
-            character = new Character(0, 250, 100, 100, 100, 50);
+            walkCycle = this.Content.Load<Texture2D>("walkcycle");
+            character = new Character(0, 250, 300, 100, 100, 50, walkCycle, 2);
 
             // Temporary gameObject to collide with in order to get to the end of the game
             //goal = new GameObject(GraphicsDevice.Viewport.Width - 50, 250, 50, 50);
@@ -127,7 +128,7 @@ namespace AlpacasWithBonnets
             // Load character walk cycle images
             walk1 = this.Content.Load<Texture2D>("walk1");
             test = this.Content.Load<Texture2D>("sky");
-            walkCycle = this.Content.Load<Texture2D>("walkcycle");
+           
             boltImage = this.Content.Load<Texture2D>("bolt");
           
      
@@ -166,7 +167,7 @@ namespace AlpacasWithBonnets
             {
                 myGameState.HandleInput(gameTime, keyState, character, bolt);
                 CollisionDetection();
-               // character.ObjectCollide(block);
+                character.WalkCheck(gameTime);
 
                 if (SingleKeyPress(Keys.Space))
                 {
@@ -247,18 +248,18 @@ namespace AlpacasWithBonnets
         // Detection method for if the character has reached the edge of the screen
         public void CollisionDetection()
         {
-            if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
-            {
-                character.ObjectPosX = GraphicsDevice.Viewport.Width - character.ObjectSquare.Width;
-            }
-            if (character.ObjectPosX <= 0)
-            {
-                character.ObjectPosX = 1;
-            }
-            if (character.ObjectSquare.Intersects(goal.ObjectSquare))
-            {
-                currentGameState = TheGameStates.End;
-            }
+            //if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
+            //{
+            //    character.ObjectPosX = GraphicsDevice.Viewport.Width - character.ObjectSquare.Width;
+            //}
+            //if (character.ObjectPosX <= 0)
+            //{
+            //    character.ObjectPosX = 1;
+            //}
+            //if (character.ObjectSquare.Intersects(goal.ObjectSquare))
+            //{
+            //    currentGameState = TheGameStates.End;
+            //}
         }
 
         // Take in a single key to check if its been hit
@@ -295,7 +296,7 @@ namespace AlpacasWithBonnets
             {
                 map.Draw(spriteBatch);
                 bolt.Draw(spriteBatch, boltImage);
-                character.Draw(spriteBatch, walk1);
+                character.Draw(spriteBatch, character.Texture);
                 //block.Draw(spriteBatch, test);
             }
                 spriteBatch.End();

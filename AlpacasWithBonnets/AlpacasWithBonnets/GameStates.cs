@@ -70,15 +70,11 @@ namespace AlpacasWithBonnets
         {
             if (keyState.IsKeyDown(Keys.A))
             {
-                newCharacter.ObjectPosX -= (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                newCharacter.ObjectPosX -= (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds); 
             }
             if (keyState.IsKeyDown(Keys.D))
             {
-                newCharacter.ObjectPosX += (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
-            }
-            if (keyState.IsKeyDown(Keys.Space))
-            {
-                
+               newCharacter.ObjectPosX += (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
         }
 
