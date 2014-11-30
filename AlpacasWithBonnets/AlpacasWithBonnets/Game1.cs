@@ -72,6 +72,12 @@ namespace AlpacasWithBonnets
 
         Vector2 spritePosition;
 
+        // Game Button Objects
+        Button playButton;
+
+        //Button texture
+        Texture2D buttonImage;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -130,6 +136,9 @@ namespace AlpacasWithBonnets
             test = this.Content.Load<Texture2D>("sky");
            
             boltImage = this.Content.Load<Texture2D>("bolt");
+
+            // All of the buttons!!
+            playButton = new Button(buttonImage, theFont, spriteBatch, "Play!");
           
      
         }
@@ -158,9 +167,21 @@ namespace AlpacasWithBonnets
             keyState = Keyboard.GetState();
 
             // Use enter key to change from the start menu to the game screen
-            if (currentGameState == TheGameStates.Start && SingleKeyPress(Keys.Enter))
+            if (currentGameState == TheGameStates.Start)
             {
-                currentGameState = TheGameStates.Game;
+                // Need a mouse to click the buttons
+                IsMouseVisible = true;
+
+                // Position the button
+                playButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 - 50);
+                playButton.ButtonUpdate();
+
+                //Check the value of buttonupdate
+                if (playButton.ButtonUpdate() == true)
+                {
+                    currentGameState = TheGameStates.Game;
+                    IsMouseVisible = false;
+                }
             }
 
             if (currentGameState == TheGameStates.Game)
@@ -290,6 +311,12 @@ namespace AlpacasWithBonnets
 
             // Calling the GameStates DrawCheck method
             myGameState.DrawCheck(currentGameState, theFont, spriteBatch);
+
+            // Button drawing (temp.)
+            if (currentGameState == TheGameStates.Start)
+            {
+                playButton.Draw();
+            }
 
             // Alpaca drawing
             if (currentGameState == TheGameStates.Game)
