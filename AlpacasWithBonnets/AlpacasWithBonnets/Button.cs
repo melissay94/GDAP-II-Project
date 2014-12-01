@@ -75,14 +75,16 @@ namespace AlpacasWithBonnets
         // Draw the button based on mouse location
         public void Draw()
         {
-            if (location.Contains(new Point(mouse.X, mouse.Y)))
-            {
-                spriteBatch.Draw(image, location, Color.DarkGreen);
-            }
-            else
-            {
-                spriteBatch.Draw(image, location, Color.ForestGreen);
-            }
+            //Commenting this out for the time being, it was giving me errors running the game in Debug - ZM
+
+            //if (location.Contains(new Point(mouse.X, mouse.Y)))
+            //{
+            //    spriteBatch.Draw(image, location, Color.DarkGreen);
+            //}
+            //else
+            //{
+            //    spriteBatch.Draw(image, location, Color.ForestGreen);
+            //}
 
             spriteBatch.DrawString(font, text, textLocation, Color.Black);
 

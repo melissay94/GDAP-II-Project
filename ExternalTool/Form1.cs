@@ -29,9 +29,11 @@ namespace ExternalTool
                 saveWriter = new BinaryWriter(saveFile);
                 saveWriter.Write(numericUpDown1.Value);
                 saveWriter.Write(numericUpDown2.Value);
+                MessageBox.Show("File saved.");
             }
             catch
             {
+                MessageBox.Show("File save error.");
             }
             finally
             {
@@ -53,19 +55,23 @@ namespace ExternalTool
                 //-ZM
 
                 saveReader = new BinaryReader(saveFile);
-                health = saveReader.ReadInt32();
-                power = saveReader.ReadInt32();
+                numericUpDown1.Value = saveReader.ReadInt32(); //Health
+                numericUpDown2.Value = saveReader.PeekChar(); //Power
+                MessageBox.Show("File loaded.");
             }
             catch
             {
-                Console.WriteLine("File read error.");
-                Console.WriteLine("Press any key to close this window.");
-                Console.ReadKey();
+                MessageBox.Show("File load error.");
             }
             finally
             {
                 saveReader.Close();
             }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
