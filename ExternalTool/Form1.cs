@@ -22,56 +22,62 @@ namespace ExternalTool
         //Save
         private void button1_Click(object sender, EventArgs e)
         {
-            BinaryWriter saveWriter = null;
             try
             {
-                Stream saveFile = File.OpenWrite("../../../AlpacasWithBonnets/AlpacasWithBonnets/bin/x86/Debug/" + textBox1.Text + ".alpaca");
-                saveWriter = new BinaryWriter(saveFile);
-                saveWriter.Write(numericUpDown1.Value);
-                saveWriter.Write(numericUpDown2.Value);
+                using (var writer = new BinaryWriter(File.OpenWrite("../../../AlpacasWithBonnets/AlpacasWithBonnets/bin/x86/Debug/" + textBox1.Text + ".alpaca")))
+                {
+                    writer.Write((int)numericUpDown1.Value);
+                    writer.Write((int)numericUpDown2.Value);
+
+                    //Saves color
+                    Color color = panel1.BackColor;
+                    writer.Write(color.R);
+                    writer.Write(color.G);
+                    writer.Write(color.B);
+                    writer.Write(color.A);
+                }
                 MessageBox.Show("File saved.");
             }
             catch
             {
                 MessageBox.Show("File save error.");
             }
-            finally
-            {
-                saveWriter.Close();
-            }
         }
 
         //Load
         private void button2_Click(object sender, EventArgs e)
         {
-            BinaryReader saveReader = null;
-            int health = 1;
-            int power = 0;
             try
             {
-                Stream saveFile = File.OpenRead("../../../AlpacasWithBonnets/AlpacasWithBonnets/bin/x86/Debug/" + textBox1.Text + ".alpaca");
-                //NOTE: For the purpose of testing we NEED to save this file as "testfile.alpaca"
-                //at least until I can implement the final version of character file selection ingame
-                //-ZM
+                using (var reader = new BinaryReader(File.OpenRead("../../../AlpacasWithBonnets/AlpacasWithBonnets/bin/x86/Debug/" + textBox1.Text + ".alpaca")))
+                {
+                    numericUpDown1.Value = reader.ReadInt32(); //Health
+                    numericUpDown2.Value = reader.ReadInt32(); //Power
 
-                saveReader = new BinaryReader(saveFile);
-                numericUpDown1.Value = saveReader.ReadInt32(); //Health
-                numericUpDown2.Value = saveReader.PeekChar(); //Power
+                    //Loads color
+                    byte r, g, b, a;
+                    r = reader.ReadByte();
+                    g = reader.ReadByte();
+                    b = reader.ReadByte();
+                    a = reader.ReadByte();
+                    panel1.BackColor = Color.FromArgb(a, r, g, b);
+                }
+                
                 MessageBox.Show("File loaded.");
             }
             catch
             {
                 MessageBox.Show("File load error.");
             }
-            finally
-            {
-                saveReader.Close();
-            }
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void panel1_Click(object sender, EventArgs e)
         {
-
+            ColorDialog colors = new ColorDialog();
+            if (colors.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                panel1.BackColor = colors.Color;
+            }
         }
     }
 }
