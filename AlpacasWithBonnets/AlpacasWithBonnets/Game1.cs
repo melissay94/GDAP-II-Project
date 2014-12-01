@@ -255,7 +255,7 @@ namespace AlpacasWithBonnets
                 //Check the value of buttonupdate
                 if (exitButton.ButtonUpdate() == true)
                 {
-                    // Should quit the game
+                    this.Exit();
                 }
                 if (playAgainButton.ButtonUpdate() == true)
                 {
