@@ -74,6 +74,8 @@ namespace AlpacasWithBonnets
 
         // Game Button Objects
         Button playButton;
+        Button exitButton;
+        Button playAgainButton;
 
         //Button texture
         Texture2D buttonImage;
@@ -139,8 +141,8 @@ namespace AlpacasWithBonnets
 
             // All of the buttons!!
             playButton = new Button(buttonImage, theFont, spriteBatch, "Play!");
-          
-     
+            exitButton = new Button(buttonImage, theFont, spriteBatch, "Exit");
+            playAgainButton = new Button(buttonImage, theFont, spriteBatch, "Play Again");    
         }
 
         /// <summary>
@@ -175,7 +177,7 @@ namespace AlpacasWithBonnets
                 // Position the button
                 playButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 - 50);
                 playButton.ButtonUpdate();
-
+                
                 //Check the value of buttonupdate
                 if (playButton.ButtonUpdate() == true)
                 {
@@ -240,6 +242,25 @@ namespace AlpacasWithBonnets
                         jumping = true;
                         jumpspeed = -14;
                     }
+                }
+            }
+
+            if (currentGameState == TheGameStates.End)
+            {
+                exitButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 - 50);
+                exitButton.ButtonUpdate();
+                playAgainButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 + 50, GraphicsDevice.Viewport.Height / 2 - 50);
+                playAgainButton.ButtonUpdate();
+
+                //Check the value of buttonupdate
+                if (exitButton.ButtonUpdate() == true)
+                {
+                    // Should quit the game
+                }
+                if (playAgainButton.ButtonUpdate() == true)
+                {
+                    currentGameState = TheGameStates.Start;
+                    IsMouseVisible = true;
                 }
             }
 
@@ -326,9 +347,15 @@ namespace AlpacasWithBonnets
                 character.Draw(spriteBatch, character.Texture);
                 //block.Draw(spriteBatch, test);
             }
-                spriteBatch.End();
-                base.Draw(gameTime);
+
+            // Button Drawing
+            if (currentGameState == TheGameStates.End)
+            {
+                exitButton.Draw();
             }
-        
+
+            spriteBatch.End();
+            base.Draw(gameTime);
+        } 
     }
 }
