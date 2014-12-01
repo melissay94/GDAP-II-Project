@@ -180,6 +180,7 @@ namespace AlpacasWithBonnets
             }
         }
 
+
         public override void Draw(SpriteBatch objectBatch, Texture2D objectPic)
         {
 

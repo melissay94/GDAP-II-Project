@@ -36,9 +36,10 @@ namespace AlpacasWithBonnets
         //Zoe McHenry
         Character character;
         CharacterIO characterIO;
-        GameObject goal;
-        GameObject block;
+        Goal goal;
+        Platform block;
         MovingObject bolt;
+        MovingObject enemy;
         Map map = new Map(16, 10); //For testing
 
         // Current game state variable based on TheGameStates
@@ -69,8 +70,11 @@ namespace AlpacasWithBonnets
 
         Texture2D test;
         Texture2D boltImage;
+        Texture2D enemyImage;
 
         Vector2 spritePosition;
+        Vector2 goalPosition;
+        Vector2 blockPosition;
 
         // Game Button Objects
         Button playButton;
@@ -119,12 +123,18 @@ namespace AlpacasWithBonnets
             //
             characterIO = new CharacterIO();
             //character = characterIO.LoadCharacter("testFile.alpaca");
-            walkCycle = this.Content.Load<Texture2D>("walkcycle");
-            character = new Character(0, 250, 300, 100, 100, 50, walkCycle, 2);
+            walkCycle = this.Content.Load<Texture2D>("walk1");
+            character = new Character(0, 250, 100, 100, 100, 50, walkCycle, 2);
 
-            // Temporary gameObject to collide with in order to get to the end of the game
-            //goal = new GameObject(GraphicsDevice.Viewport.Width - 50, 250, 50, 50);
-            //block = new GameObject(150, 250, 50, 50);
+            enemy = new MovingObject(1,10,2,1,3);
+            enemyImage = this.Content.Load<Texture2D>("enemyTest");
+
+            // Colliding objects for goal and block to collide with in order to get to the end of the game
+            goalPosition = new Vector2(GraphicsDevice.Viewport.Width - 50, 250);
+            goal = new Goal(goalPosition, Content);
+
+            blockPosition = new Vector2(150,250);
+            block = new Platform(blockPosition, Content);
 
             bolt = new MovingObject((int)character.ObjectPosX + (int)character.ObjectSquare.Width,
                 (int)character.ObjectPosY + (int)character.ObjectSquare.Height/2, 10, 20);
@@ -189,7 +199,7 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 myGameState.HandleInput(gameTime, keyState, character, bolt);
-                CollisionDetection();
+                //CollisionDetection();
                 character.WalkCheck(gameTime);
 
                 if (SingleKeyPress(Keys.Space))
@@ -287,9 +297,25 @@ namespace AlpacasWithBonnets
             base.Update(gameTime);
         }
 
-        // Detection method for if the character has reached the edge of the screen
-        public void CollisionDetection()
-        {
+        // Detection method for if the character has collided with an object
+        //public void CollisionDetection()
+        //{
+            //if (character.ObjectSquare.Intersects(goal.TileRectangle))
+            //{
+            //    currentGameState = TheGameStates.End;
+            //}
+            //if (character.ObjectSquare.Intersects(enemy.ObjectSquare))
+            //{
+            //    currentGameState = TheGameStates.End;
+            //}
+            //if (character.ObjectSquare.Intersects(block.TileRectangle))
+            //{
+            //    if (character.ObjectPosY < block.TileLocation.Y)
+            //    {
+            //        character.ObjectPosY -= 1;
+            //        jumpspeed = 0;
+            //    }
+            //}
             //if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
             //{
             //    character.ObjectPosX = GraphicsDevice.Viewport.Width - character.ObjectSquare.Width;
@@ -302,7 +328,7 @@ namespace AlpacasWithBonnets
             //{
             //    currentGameState = TheGameStates.End;
             //}
-        }
+        //}
 
         // Take in a single key to check if its been hit
         public Boolean SingleKeyPress(Keys keyPress)
@@ -345,7 +371,9 @@ namespace AlpacasWithBonnets
                 map.Draw(spriteBatch);
                 bolt.Draw(spriteBatch, boltImage);
                 character.Draw(spriteBatch, character.Texture);
-                //block.Draw(spriteBatch, test);
+                enemy.Draw(spriteBatch, enemyImage);
+                
+                block.Draw(spriteBatch);
             }
 
             // Button Drawing
