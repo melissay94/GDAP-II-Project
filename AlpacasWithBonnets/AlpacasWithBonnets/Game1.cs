@@ -84,6 +84,8 @@ namespace AlpacasWithBonnets
         //Button texture
         Texture2D buttonImage;
 
+        bool isActive;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -126,7 +128,7 @@ namespace AlpacasWithBonnets
             walkCycle = this.Content.Load<Texture2D>("walk1");
             character = new Character(0, 250, 100, 100, 100, 50, walkCycle, 2);
 
-            enemy = new MovingObject(1,10,2,1,3);
+            enemy = new MovingObject(0,550,250,100,100);
             enemyImage = this.Content.Load<Texture2D>("enemyTest");
 
             // Colliding objects for goal and block to collide with in order to get to the end of the game
@@ -148,6 +150,9 @@ namespace AlpacasWithBonnets
             test = this.Content.Load<Texture2D>("sky");
            
             boltImage = this.Content.Load<Texture2D>("bolt");
+            isActive = false;
+
+            buttonImage = this.Content.Load<Texture2D>("button");
 
             // All of the buttons!!
             playButton = new Button(buttonImage, theFont, spriteBatch, "Play!");
@@ -199,11 +204,13 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 myGameState.HandleInput(gameTime, keyState, character, bolt);
-                //CollisionDetection();
+                CollisionDetection();
                 character.WalkCheck(gameTime);
 
-                if (SingleKeyPress(Keys.Space))
+                if (SingleKeyPress(Keys.Space) && !isActive)
                 {
+                    isActive = true;
+
                     while (bolt.ObjectPosX + bolt.ObjectSquare.Width <= 200)
                     {
                         bolt.ObjectPosX += (bolt.ObjectSpeed * 2 * (float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -257,9 +264,10 @@ namespace AlpacasWithBonnets
 
             if (currentGameState == TheGameStates.End)
             {
+                IsMouseVisible = true;
                 exitButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 - 50);
                 exitButton.ButtonUpdate();
-                playAgainButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 + 50, GraphicsDevice.Viewport.Height / 2 - 50);
+                playAgainButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2);
                 playAgainButton.ButtonUpdate();
 
                 //Check the value of buttonupdate
@@ -289,46 +297,37 @@ namespace AlpacasWithBonnets
                 currentGameState = TheGameStates.Start;
             }
 
-            if (currentGameState == TheGameStates.End && SingleKeyPress(Keys.Enter))
-            {
-                currentGameState = TheGameStates.Start;
-            }
-
             base.Update(gameTime);
         }
 
         // Detection method for if the character has collided with an object
-        //public void CollisionDetection()
-        //{
-            //if (character.ObjectSquare.Intersects(goal.TileRectangle))
-            //{
-            //    currentGameState = TheGameStates.End;
-            //}
-            //if (character.ObjectSquare.Intersects(enemy.ObjectSquare))
-            //{
-            //    currentGameState = TheGameStates.End;
-            //}
-            //if (character.ObjectSquare.Intersects(block.TileRectangle))
-            //{
-            //    if (character.ObjectPosY < block.TileLocation.Y)
-            //    {
-            //        character.ObjectPosY -= 1;
-            //        jumpspeed = 0;
-            //    }
-            //}
-            //if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
-            //{
-            //    character.ObjectPosX = GraphicsDevice.Viewport.Width - character.ObjectSquare.Width;
-            //}
-            //if (character.ObjectPosX <= 0)
-            //{
-            //    character.ObjectPosX = 1;
-            //}
-            //if (character.ObjectSquare.Intersects(goal.ObjectSquare))
-            //{
-            //    currentGameState = TheGameStates.End;
-            //}
-        //}
+        public void CollisionDetection()
+        {
+            if (character.ObjectSquare.Intersects(enemy.ObjectSquare))
+            {
+                currentGameState = TheGameStates.End;
+            }
+            if (character.ObjectSquare.Intersects(block.TileRectangle))
+            {
+                if (character.ObjectPosX < block.TileLocation.X)
+                {
+                    character.ObjectPosX = block.TileLocation.X - 1;
+                    //jumpspeed = 0;
+                }
+            }
+            if (character.ObjectPosX + character.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
+            {
+                character.ObjectPosX = GraphicsDevice.Viewport.Width - character.ObjectSquare.Width;
+            }
+            if (character.ObjectPosX <= 0)
+            {
+                character.ObjectPosX = 1;
+            }
+            if (character.ObjectSquare.Intersects(goal.TileRectangle))
+            {
+                currentGameState = TheGameStates.End;
+            }
+        }
 
         // Take in a single key to check if its been hit
         public Boolean SingleKeyPress(Keys keyPress)
@@ -369,7 +368,12 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 map.Draw(spriteBatch);
-                bolt.Draw(spriteBatch, boltImage);
+
+                if (isActive == true)
+                {
+                    bolt.Draw(spriteBatch, boltImage);
+                }
+
                 character.Draw(spriteBatch, character.Texture);
                 enemy.Draw(spriteBatch, enemyImage);
                 
@@ -380,6 +384,7 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.End)
             {
                 exitButton.Draw();
+                playAgainButton.Draw();
             }
 
             spriteBatch.End();

@@ -27,7 +27,7 @@ namespace AlpacasWithBonnets
         public Vector2 TileLocation
         {
             get { return this.TileLocation; }
-            set { this.tileLocation = value; } 
+            set { tileLocation = value; }
         }
 
         public Texture2D TileImage

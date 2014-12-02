@@ -30,7 +30,7 @@ namespace AlpacasWithBonnets
                     // Making all of the statements for the Start Menu
                     string title = "Alpacas with Bonnets";
                     string goalOfGame = "Collect the bonnet";
-                    string instructions = "Use A and D to move left and right, W to jump, and enter to play the game";
+                    string instructions = "Use A and D to move left and right, W to jump";
 
                     // Printing all of the different statements
                     aSpriteBatch.DrawString(aSpriteFont, title, new Vector2(10, 10), Color.Black);
@@ -54,7 +54,7 @@ namespace AlpacasWithBonnets
                 case TheGameStates.End:
                     // Making the statements to print
                     string gameOver = "Game Over";
-                    string restart = "Potentially press enter to go back to start";
+                    string restart = "Press enter to go back to start";
 
                     //Printing the statements
                     aSpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);

@@ -86,6 +86,8 @@ namespace AlpacasWithBonnets
             //    spriteBatch.Draw(image, location, Color.ForestGreen);
             //}
 
+            spriteBatch.Draw(image, location, Color.Purple);
+
             spriteBatch.DrawString(font, text, textLocation, Color.Black);
 
             if (clicked)
