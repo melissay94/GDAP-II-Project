@@ -10,7 +10,6 @@ namespace AlpacasWithBonnets
     // Base class for any object to be made in game 
     // Author: Melissa Young, Zoe McHenry
 
-    //Making this a public class. -ZM
     abstract public class GameObject
     {
         // Rectangle for objects
@@ -31,13 +30,11 @@ namespace AlpacasWithBonnets
             get { return objectSquare; }
             set { objectSquare = value; }
         }
-
         public float ObjectPosX
         {
             get { return objectSquare.X; }
             set { objectSquare.X = (int)(x = value); }
         }
-
         public float ObjectPosY
         {
             get { return objectSquare.Y; }

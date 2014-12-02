@@ -12,10 +12,10 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AlpacasWithBonnets
 {
-    //Zoe McHenry
+    // Zoe McHenry
     public class Sky : Tile
     {
-        //Constructor
+        // Constructor
         public Sky(Vector2 tileLocation, ContentManager contentRef):base(tileLocation, contentRef)
         {
             IsPassable = true;

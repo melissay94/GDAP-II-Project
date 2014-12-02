@@ -27,21 +27,25 @@ namespace AlpacasWithBonnets
         //Doesn't look like anyone has done anything with this and I need it done so I'm gonna do it. -ZM
         //I'm changing this to a public instead of an abstract, as I'm changing the way the character loading works. -ZM
 
+        // Atributes
+        // Health and Power
         private int health, power;
 
         // Attributes for the walk cycle
-        Texture2D texture;
         float timer = 0f;
         float interval = 200f;
         int currentFrame = 0;
         int frameWidth = 100;
-        int frameHeight = 100;
+        int frameHeight = 100; 
+        Texture2D texture;
         Vector2 position, origin;
         Rectangle sourceRect;
 
+        // Keyboard States
         KeyboardState currentKBState;
         KeyboardState pastKBState;
 
+        // Get Sets
         public int Health
         {
             get { return health; }
@@ -52,38 +56,35 @@ namespace AlpacasWithBonnets
             get { return this.power; }
             set { this.power = value; }
         }
-
         public Vector2 Position
         {
             get { return position; }
             set { position = value; }
         }
-
         public Vector2 Origin
         {
             get { return origin; }
             set { origin = value; }
         }
-
         public Texture2D Texture
         {
             get { return texture; }
             set { texture = value; }
 
         }
-
         public Rectangle SourceRect
         {
             get { return sourceRect; }
             set { sourceRect = value; }
         }
-
         //public AlpacaType AlpacaType
         //{
         //    get { return this.alpacaType; }
         //}
 
-        public Character(int x, int y, int width, int height, int health, int power, Texture2D texture, int currentFrame) : base(x, y, width, height)
+        // Construcor
+        public Character(int x, int y, int width, int height, int health, int power, Texture2D texture, int currentFrame)
+            : base(x, y, width, height)
         {
             this.health = health;
             this.power = power;
@@ -91,6 +92,7 @@ namespace AlpacasWithBonnets
             this.currentFrame = currentFrame;
         }
 
+        // Methods
         public bool Collision(Tile worldTile)
         {
             if (worldTile.TileRectangle.Intersects(this.ObjectSquare))
@@ -103,28 +105,27 @@ namespace AlpacasWithBonnets
             }
         }
 
-        public void ObjectCollide(GameObject block)
-        {
-            // Collision detection between the character and the block object
-
-
-            if (this.ObjectPosX + this.ObjectSquare.Width >= block.ObjectPosX)
-            {
-                this.ObjectPosX = this.ObjectPosX - 1;
-            }
-            if (this.ObjectPosX <= block.ObjectPosX + block.ObjectSquare.Width)
-            {
-                this.ObjectPosX = this.ObjectPosX + 1;
-            }
-            if (this.ObjectPosY <= block.ObjectPosY + block.ObjectSquare.Width)
-            {
-                this.ObjectPosY = this.ObjectPosY + 1;
-            }
-            if (this.ObjectPosY + this.ObjectSquare.Height >= block.ObjectSquare.Height)
-            {
-                this.ObjectPosY = this.ObjectPosY - 1;
-            }
-        }
+        // Not Used May Delete
+        //public void ObjectCollide(GameObject block)
+        //{
+        //    // Collision detection between the character and the block object
+        //    if (this.ObjectPosX + this.ObjectSquare.Width >= block.ObjectPosX)
+        //    {
+        //        this.ObjectPosX = this.ObjectPosX - 1;
+        //    }
+        //    if (this.ObjectPosX <= block.ObjectPosX + block.ObjectSquare.Width)
+        //    {
+        //        this.ObjectPosX = this.ObjectPosX + 1;
+        //    }
+        //    if (this.ObjectPosY <= block.ObjectPosY + block.ObjectSquare.Width)
+        //    {
+        //        this.ObjectPosY = this.ObjectPosY + 1;
+        //    }
+        //    if (this.ObjectPosY + this.ObjectSquare.Height >= block.ObjectSquare.Height)
+        //    {
+        //        this.ObjectPosY = this.ObjectPosY - 1;
+        //    }
+        //}
 
         // Check for if a key is being pressed. If not, it sets the alpaca to neutral position
         public void WalkCheck(GameTime gameTime)
@@ -180,10 +181,8 @@ namespace AlpacasWithBonnets
             }
         }
 
-
         public override void Draw(SpriteBatch objectBatch, Texture2D objectPic)
         {
-
             base.Draw(objectBatch, objectPic);
         }
     }

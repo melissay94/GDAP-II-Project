@@ -56,7 +56,6 @@ namespace AlpacasWithBonnets
             {
                 levelInput.Close();
             }
-            //
 
             //Loops
             //Determine what type of Tile each member of the array is based on the .txt file

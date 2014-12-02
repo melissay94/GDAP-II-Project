@@ -12,60 +12,53 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AlpacasWithBonnets
 {
-    //Tile class
-    //Zoe McHenry
+    // Tile class
+    // Zoe McHenry
     public abstract class Tile
     {
         //Fields
         public const int SIZE = 50;
+        private bool isPassable;
         private Vector2 tileLocation;
         private Texture2D tileImage;
-        private bool isPassable;
         private Rectangle tileRectangle;
 
-        //Properties
+        // Properties
         public Vector2 TileLocation
         {
             get { return this.TileLocation; }
             set { tileLocation = value; }
         }
-
         public Texture2D TileImage
         {
             get { return this.tileImage; }
             set { this.tileImage = value; }
         }
-
         public bool IsPassable
         {
             get { return this.isPassable; }
             set { this.isPassable = value; }
         }
-
         public Rectangle TileRectangle
         {
             get { return tileRectangle; }
             set { this.tileRectangle = value; }
         }
 
-        //Big constructor
-        //Has all possible inputs
+        // Constructor
         public Tile(Vector2 tileLocation, Texture2D tileImage, bool isPassable)
         {
             this.tileLocation = tileLocation;
             this.tileImage = tileImage;
             this.isPassable = isPassable;
         }
-
-        //Little constructor
-        //Only inputs location, features content manager
         public Tile(Vector2 tileLocation, ContentManager contentRef)
         {
             this.TileLocation = tileLocation;
             tileRectangle = new Rectangle((int)tileLocation.X, (int)tileLocation.Y, SIZE, SIZE);
         }
 
-        //Method
+        // Method
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(tileImage, tileRectangle, Color.White);

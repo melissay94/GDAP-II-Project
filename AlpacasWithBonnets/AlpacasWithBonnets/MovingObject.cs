@@ -7,16 +7,25 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AlpacasWithBonnets
 {
     // Base class for any object that requires movement such as Player and Enemy
-    // Inherit from GameObject class 
+    // Inherits from GameObject class 
     // Author: Melissa Young, Zoe McHenry 
 
-    //Making this a public class -ZM
     public class MovingObject : GameObject
     {
         // Each object will have a different speed
         private float objectSpeed = 150.0f;
         // Direction
-        private int direction; ////////////////////////////////////THIS IS NOT USED!!!!!!!!!!!!!!!!!!!WHY????????????????????????
+        private int direction;
+
+        // Get Set
+        public float ObjectSpeed
+        {
+            get { return objectSpeed; }
+        }
+        public int Direction
+        {
+            get { return direction; }
+        }
 
         // Constructor 
         public MovingObject(float objectSpeed, int x, int y, int width, int height)
@@ -24,16 +33,10 @@ namespace AlpacasWithBonnets
         {
             this.objectSpeed = objectSpeed;
         }
-
-        // Property for the speed. Speed of objects should not change once decided.
-        public float ObjectSpeed
+        //Character Constructor Zoe McHenry
+        public MovingObject(int x, int y, int width, int height)
+            : base(x, y, width, height)
         {
-            get { return objectSpeed; }
-        }
-        // Property for the direction
-        public int Direction
-        {
-            get { return direction; }
         }
 
         // Inherited draw method
@@ -53,12 +56,6 @@ namespace AlpacasWithBonnets
             {
                 ObjectPosX -= ObjectSpeed;
             }
-        }
-
-        //Zoe McHenry
-        //Made this to make Character constructor work
-        public MovingObject(int x, int y, int width, int height) : base(x, y, width, height)
-        {
         }
     }
 }

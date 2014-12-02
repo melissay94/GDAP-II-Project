@@ -12,17 +12,13 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AlpacasWithBonnets
 {
-
-    // Making the different Game States that are needed
-  
-
     class GameStates
     {
         // Sara Nuffer, James Borger
         // This class will have all of the information that the Game1 class will need to be able to work with the game states
 
         // This method changes what the game draws depending on the game state
-        public void DrawCheck(TheGameStates aGameState, SpriteFont aSpriteFont, SpriteBatch aSpriteBatch) // Also needs the name of the spritefont
+        public void DrawCheck(TheGameStates aGameState, SpriteFont aSpriteFont, SpriteBatch aSpriteBatch)
         {
             switch (aGameState)
             {
@@ -49,6 +45,7 @@ namespace AlpacasWithBonnets
                     aSpriteBatch.DrawString(aSpriteFont, pause, new Vector2(10, 10), Color.Black);
                     aSpriteBatch.DrawString(aSpriteFont, goBack, new Vector2(10, 25), Color.Black);
                     aSpriteBatch.DrawString(aSpriteFont, startMenu, new Vector2(10, 40), Color.Black);
+
                     break;
 
                 case TheGameStates.End:
@@ -65,19 +62,19 @@ namespace AlpacasWithBonnets
         }
 
         // Handles Keyboard Input from the player
-        //For Movement and attacking
+        // Used for Movement and Attacking
         public void HandleInput(GameTime gameTime, KeyboardState keyState, Character newCharacter, GameObject ammo)
         {
+            // Move Left
             if (keyState.IsKeyDown(Keys.A))
             {
                 newCharacter.ObjectPosX -= (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds); 
             }
+            // Move Right
             if (keyState.IsKeyDown(Keys.D))
             {
                newCharacter.ObjectPosX += (newCharacter.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
         }
-
-
     }
 }

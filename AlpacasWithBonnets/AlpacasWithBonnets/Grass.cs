@@ -12,9 +12,10 @@ using Microsoft.Xna.Framework.Media;
 
 namespace AlpacasWithBonnets
 {
+    // Zoe McHenry
     public class Grass : Tile
     {
-        //Constructor
+        // Constructor
         public Grass(Vector2 tileLocation, ContentManager contentRef):base(tileLocation, contentRef)
         {
             IsPassable = false;
