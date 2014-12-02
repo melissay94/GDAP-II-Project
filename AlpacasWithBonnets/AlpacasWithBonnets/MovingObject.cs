@@ -16,7 +16,7 @@ namespace AlpacasWithBonnets
         // Each object will have a different speed
         private float objectSpeed = 150.0f;
         // Direction
-        private int direction;
+        private int direction; ////////////////////////////////////THIS IS NOT USED!!!!!!!!!!!!!!!!!!!WHY????????????????????????
 
         // Constructor 
         public MovingObject(float objectSpeed, int x, int y, int width, int height)
