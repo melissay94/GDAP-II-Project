@@ -206,7 +206,7 @@ namespace AlpacasWithBonnets
                 // Handling input
                 myGameState.HandleInput(gameTime, keyState, character, bolt);
                 // Detecting Collisions
-                CollisionDetection();
+                CollisionDetection(gameTime, keyState);
                 // Checking the walk cycle
                 character.WalkCheck(gameTime);
 
@@ -293,6 +293,7 @@ namespace AlpacasWithBonnets
                 if (playAgainButton.ButtonUpdate() == true)
                 {
                     currentGameState = TheGameStates.Start;
+                    ResetGame();
                     IsMouseVisible = true;
                 }
             }
@@ -318,7 +319,7 @@ namespace AlpacasWithBonnets
         }
 
         // Method to detect if the character has collided with an object
-        public void CollisionDetection()
+        public void CollisionDetection(GameTime gameTime, KeyboardState keys)
         {
             // Character touches the enemy
             if (character.ObjectSquare.Intersects(enemy.ObjectSquare))
@@ -329,10 +330,22 @@ namespace AlpacasWithBonnets
             // Character touches the Platforms
             if (character.ObjectSquare.Intersects(block.TileRectangle))
             {
-                if (character.ObjectPosX < block.TileLocation.X)
+                if (character.ObjectPosX + character.ObjectSquare.Width >= block.TileLocation.X && keys.IsKeyDown(Keys.D))
                 {
-                    character.ObjectPosX = block.TileLocation.X - 1;
-                    //jumpspeed = 0;
+                    character.ObjectPosX  = character.ObjectPosX - character.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds - 1;
+                }
+
+                if (character.ObjectPosX <= block.TileLocation.X + block.TileRectangle.Width && keys.IsKeyDown(Keys.A))
+                {
+                    character.ObjectPosX = character.ObjectPosX + character.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds + 1;
+                }
+                if (character.ObjectPosY + character.ObjectSquare.Y >= block.TileLocation.Y)
+                {
+                    character.ObjectPosY = character.ObjectPosY - character.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds - 1;
+                }
+                if (character.ObjectPosY <= block.TileLocation.Y + block.TileRectangle.Height)
+                {
+                    character.ObjectPosY = character.ObjectPosY + character.ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
                 }
             }
             // Characer reaches the right edge of the screen
@@ -367,6 +380,12 @@ namespace AlpacasWithBonnets
         public void UpdateAmmo()
         {
             bolt.ObjectPosX += bolt.ObjectSpeed * 2;
+        }
+
+        public void ResetGame()
+        {
+            character.ObjectPosX = 0;
+            character.ObjectPosY = 250;
         }
 
         /// <summary>

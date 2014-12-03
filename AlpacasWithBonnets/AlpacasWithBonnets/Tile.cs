@@ -26,17 +26,17 @@ namespace AlpacasWithBonnets
         // Properties
         public Vector2 TileLocation
         {
-            get { return this.TileLocation; }
+            get { return tileLocation; }
             set { tileLocation = value; }
         }
         public Texture2D TileImage
         {
-            get { return this.tileImage; }
+            get { return tileImage; }
             set { this.tileImage = value; }
         }
         public bool IsPassable
         {
-            get { return this.isPassable; }
+            get { return isPassable; }
             set { this.isPassable = value; }
         }
         public Rectangle TileRectangle
