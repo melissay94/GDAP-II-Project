@@ -39,6 +39,8 @@ namespace AlpacasWithBonnets
         float jumpspeed = 0;
         // Single bolt attribute
         bool isActive;
+        // Single Health Atribute
+        //int currentHealth = 100;
 
         // The single items
         Character character;
@@ -68,6 +70,7 @@ namespace AlpacasWithBonnets
         Texture2D walk1;
         Texture2D walkCycle;
         Texture2D buttonImage;
+        //Texture2D healthBar; // Health Bar
 
         // Points
         Point frameSize = new Point(50, 50);
@@ -158,6 +161,9 @@ namespace AlpacasWithBonnets
             playButton = new Button(buttonImage, theFont, spriteBatch, "Play!");
             exitButton = new Button(buttonImage, theFont, spriteBatch, "Exit");
             playAgainButton = new Button(buttonImage, theFont, spriteBatch, "Play Again");    
+
+            // Health Bar
+            //healthBar = Content.Load<Texture2D>("HealthBar2");
         }
 
         /// <summary>
@@ -223,6 +229,9 @@ namespace AlpacasWithBonnets
                     // Changing the Bolt's position
                     bolt.ObjectPosX = character.ObjectPosX + character.ObjectSquare.Width;
                     bolt.ObjectPosY = character.ObjectPosY + character.ObjectSquare.Height / 2;
+                    
+                    // Health Bar
+                    //currentHealth = (int)MathHelper.Clamp(currentHealth, 0, 100);
                 }
 
                 // Jump in the correct direction
@@ -429,6 +438,22 @@ namespace AlpacasWithBonnets
                 character.Draw(spriteBatch, character.Texture);
                 enemy.Draw(spriteBatch, enemyImage);
                 block.Draw(spriteBatch);
+
+                //Health bar
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Gray);
+
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, (int)(healthBar.Width * ((double)currentHealth / 100)), 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+
+                //if (currentHealth <= 0)
+                //{
+                //    currentGameState = TheGameStates.End;
+                //}
             }
 
             spriteBatch.End();
