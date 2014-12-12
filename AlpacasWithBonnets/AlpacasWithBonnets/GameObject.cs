@@ -18,10 +18,17 @@ namespace AlpacasWithBonnets
         private float x;
         private float y;
 
+        public Color MyColor
+        {
+            get;
+            set;
+        }
+
         // Constructor
         public GameObject(int x, int y, int width, int height)
         {
             objectSquare = new Rectangle(x, y, width, height);
+            MyColor = Color.White;
         }
 
         // Properties for the rectangle and its x and y value
@@ -44,7 +51,7 @@ namespace AlpacasWithBonnets
         // Base draw method for the objects 
         public virtual void Draw(SpriteBatch objectBatch, Texture2D objectPic)
         {
-            objectBatch.Draw(objectPic, ObjectSquare, Color.White);
+            objectBatch.Draw(objectPic, ObjectSquare, MyColor);
         }
     }
 }

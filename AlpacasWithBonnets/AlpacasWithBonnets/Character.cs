@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -184,6 +185,23 @@ namespace AlpacasWithBonnets
         public override void Draw(SpriteBatch objectBatch, Texture2D objectPic)
         {
             base.Draw(objectBatch, objectPic);
+        }
+
+        public void Load(string filename)
+        {
+            using (var reader = new BinaryReader(File.OpenRead(filename)))
+            {
+                health = reader.ReadInt32();
+                power = reader.ReadInt32();
+
+                byte r, g, b, a;
+                r = reader.ReadByte();
+                g = reader.ReadByte();
+                b = reader.ReadByte();
+                a = reader.ReadByte();
+
+                MyColor = Color.FromNonPremultiplied(r, g, b, a);
+            }
         }
     }
 }

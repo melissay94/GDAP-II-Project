@@ -136,6 +136,7 @@ namespace AlpacasWithBonnets
             // Character Walk Cycle
             walkCycle = this.Content.Load<Texture2D>("walk1");
             character = new Character(0, 250, 100, 100, 100, 50, walkCycle, 2);
+            character.Load("jimmy.alpaca"); //THE LOADED ALPACA MUST BE ENTERED MANUALLY HERE BRUH
             walk1 = this.Content.Load<Texture2D>("walk1");
 
             // Enemy
