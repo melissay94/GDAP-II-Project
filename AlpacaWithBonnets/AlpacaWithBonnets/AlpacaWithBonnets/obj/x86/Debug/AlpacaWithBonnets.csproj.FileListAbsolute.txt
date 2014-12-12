@@ -1,0 +1,8 @@
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.csprojResolveAssemblyReference.cache
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\gameFont.xnb
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\AlpacaWithBonnets.exe
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\AlpacaWithBonnets.pdb
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.exe
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.pdb
+d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\button.xnb
