@@ -40,11 +40,10 @@ namespace AlpacasWithBonnets
         // Single bolt attribute
         bool isActive;
         // Single Health Atribute
-        //int currentHealth = 100;
+        int currentHealth = 100;
 
         // The single items
         Character character;
-        CharacterIO characterIO;
         Goal goal;
         Platform block;
         TheGameStates currentGameState;
@@ -62,6 +61,9 @@ namespace AlpacasWithBonnets
         Button playButton;
         Button exitButton;
         Button playAgainButton;
+        Button returnToGame;
+        Button quitGame;
+        Button restartGame;
 
         // Texture2D
         Texture2D test;
@@ -70,7 +72,8 @@ namespace AlpacasWithBonnets
         Texture2D walk1;
         Texture2D walkCycle;
         Texture2D buttonImage;
-        //Texture2D healthBar; // Health Bar
+        Texture2D backgroundImage;
+        Texture2D healthBar; // Health Bar
 
         // Points
         Point frameSize = new Point(50, 50);
@@ -81,6 +84,7 @@ namespace AlpacasWithBonnets
         Vector2 spritePosition;
         Vector2 goalPosition;
         Vector2 blockPosition;
+        Vector2 backgroundPosition;
 
         // Objects
         Map map = new Map(16, 10);
@@ -105,6 +109,10 @@ namespace AlpacasWithBonnets
             currentGameState = TheGameStates.Start;
             jumping = false;
 
+            // Background Position
+            backgroundPosition.X = 0;
+            backgroundPosition.Y = 0;
+
             base.Initialize();
         }
 
@@ -120,10 +128,7 @@ namespace AlpacasWithBonnets
 
             // Font
             theFont = this.Content.Load<SpriteFont>("AvoiderFont");
-
-            //CharacterIO
-            characterIO = new CharacterIO();
-            //character = characterIO.LoadCharacter("testFile.alpaca");
+            //theFont = new SpriteFont();
 
             // Colliding objects for goal and block to collide with in order to get to the end of the game
             goalPosition = new Vector2(GraphicsDevice.Viewport.Width - 50, 250);
@@ -161,10 +166,17 @@ namespace AlpacasWithBonnets
             buttonImage = this.Content.Load<Texture2D>("button");
             playButton = new Button(buttonImage, theFont, spriteBatch, "Play!");
             exitButton = new Button(buttonImage, theFont, spriteBatch, "Exit");
-            playAgainButton = new Button(buttonImage, theFont, spriteBatch, "Play Again");    
+            playAgainButton = new Button(buttonImage, theFont, spriteBatch, "Play Again");
+            returnToGame = new Button(buttonImage, theFont, spriteBatch, "Back To Game");
+            quitGame = new Button(buttonImage, theFont, spriteBatch, "Quit Game");
+            restartGame = new Button(buttonImage, theFont, spriteBatch, "Restart Game");
+            
+
+            // Background
+            backgroundImage = this.Content.Load<Texture2D>("background");
 
             // Health Bar
-            //healthBar = Content.Load<Texture2D>("HealthBar2");
+            healthBar = Content.Load<Texture2D>("HealthBar2");
         }
 
         /// <summary>
@@ -232,7 +244,7 @@ namespace AlpacasWithBonnets
                     bolt.ObjectPosY = character.ObjectPosY + character.ObjectSquare.Height / 2;
                     
                     // Health Bar
-                    //currentHealth = (int)MathHelper.Clamp(currentHealth, 0, 100);
+                    currentHealth = (int)MathHelper.Clamp(currentHealth, 0, 100);
                 }
 
                 // Jump in the correct direction
@@ -301,6 +313,35 @@ namespace AlpacasWithBonnets
                 playAgainButton.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2);
                 playAgainButton.ButtonUpdate();
                 if (playAgainButton.ButtonUpdate() == true)
+                {
+                    currentGameState = TheGameStates.Start;
+                    ResetGame();
+                    IsMouseVisible = true;
+                }
+            }
+            if (currentGameState == TheGameStates.Pause)
+            {
+                // Buttons
+                // Return to Game
+                returnToGame.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 + 50);
+                returnToGame.ButtonUpdate();
+                if (returnToGame.ButtonUpdate() == true)
+                {
+                    currentGameState = TheGameStates.Game;
+                }
+
+                // Quit Game
+                quitGame.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2);
+                quitGame.ButtonUpdate();
+                if (quitGame.ButtonUpdate() == true)
+                {
+                    this.Exit();
+                }
+
+                // Restart Game
+                restartGame.ButtonLocation(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 - 50);
+                restartGame.ButtonUpdate();
+                if (restartGame.ButtonUpdate() == true)
                 {
                     currentGameState = TheGameStates.Start;
                     ResetGame();
@@ -407,6 +448,9 @@ namespace AlpacasWithBonnets
             GraphicsDevice.Clear(Color.AliceBlue);
             spriteBatch.Begin();
 
+            // Background
+            spriteBatch.Draw(backgroundImage, backgroundPosition, Color.White); 
+
             // Calling the GameStates DrawCheck method to set up some of the basic things
             myGameState.DrawCheck(currentGameState, theFont, spriteBatch);
 
@@ -442,20 +486,20 @@ namespace AlpacasWithBonnets
                 block.Draw(spriteBatch);
 
                 //Health bar
-                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
 
-                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
 
-                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Gray);
+                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Gray);
 
-                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, (int)(healthBar.Width * ((double)currentHealth / 100)), 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, (int)(healthBar.Width * ((double)currentHealth / 100)), 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
 
-                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
 
-                //if (currentHealth <= 0)
-                //{
-                //    currentGameState = TheGameStates.End;
-                //}
+                if (currentHealth <= 0)
+                {
+                    currentGameState = TheGameStates.End;
+                }
             }
 
             spriteBatch.End();
