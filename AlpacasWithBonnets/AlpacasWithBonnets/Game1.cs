@@ -426,7 +426,8 @@ namespace AlpacasWithBonnets
             if (currentGameState == TheGameStates.Game)
             {
                 // Draw the map
-                map.Draw(spriteBatch);
+                Vector2 pos = new Vector2(character.ObjectPosX, character.ObjectPosY);
+                map.Draw(spriteBatch, pos);
 
                 // Draw the bolt if it is active
                 if (isActive == true)

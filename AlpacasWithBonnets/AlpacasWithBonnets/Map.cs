@@ -104,12 +104,17 @@ namespace AlpacasWithBonnets
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 playerPos)
         {
+            Rectangle rect = new Rectangle(0, 0, Tile.SIZE, Tile.SIZE);
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
                 {
+                    rect.X = i * Tile.SIZE - (int)playerPos.X;
+                    rect.Y = j * Tile.SIZE - (int)playerPos.Y;
+                    level[i, j].TileRectangle = rect;
+
                     level[i, j].Draw(spriteBatch);
                 }
             }
