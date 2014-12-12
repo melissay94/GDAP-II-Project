@@ -29,9 +29,9 @@ namespace AlpacasWithBonnets
                     string instructions = "Use A and D to move left and right, W to jump";
 
                     // Printing all of the different statements
-                    aSpriteBatch.DrawString(aSpriteFont, title, new Vector2(10, 10), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, goalOfGame, new Vector2(10, 25), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, instructions, new Vector2(10, 40), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, title, new Vector2(50, 20), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, goalOfGame, new Vector2(50, 35), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, instructions, new Vector2(50, 50), Color.Black);
                     
                     break;
 
@@ -42,9 +42,9 @@ namespace AlpacasWithBonnets
                     string startMenu = "Press S to go back to Start";
 
                     // Print the statements to the menu
-                    aSpriteBatch.DrawString(aSpriteFont, pause, new Vector2(10, 10), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, goBack, new Vector2(10, 25), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, startMenu, new Vector2(10, 40), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, pause, new Vector2(50, 20), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, goBack, new Vector2(50, 35), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, startMenu, new Vector2(50, 50), Color.Black);
 
                     break;
 
@@ -54,8 +54,8 @@ namespace AlpacasWithBonnets
                     string restart = "Press enter to go back to start";
 
                     //Printing the statements
-                    aSpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(10, 10), Color.Black);
-                    aSpriteBatch.DrawString(aSpriteFont, restart, new Vector2(10, 25), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, gameOver, new Vector2(50, 20), Color.Black);
+                    aSpriteBatch.DrawString(aSpriteFont, restart, new Vector2(50, 35), Color.Black);
 
                     break;
             }

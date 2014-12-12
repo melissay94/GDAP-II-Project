@@ -486,15 +486,18 @@ namespace AlpacasWithBonnets
                 block.Draw(spriteBatch);
 
                 //Health bar
-                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Gray);
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, (int)(healthBar.Width * ((double)currentHealth / 100)), 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                //spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
 
-                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+                spriteBatch.Draw(healthBar, new Rectangle(0, 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                spriteBatch.Draw(healthBar, new Rectangle(0, 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
+                spriteBatch.Draw(healthBar, new Rectangle(0, 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Gray);
+                spriteBatch.Draw(healthBar, new Rectangle(0, 30, (int)(healthBar.Width * ((double)currentHealth / 100)), 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
+                spriteBatch.Draw(healthBar, new Rectangle(0, 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
 
-                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Gray);
-
-                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, (int)(healthBar.Width * ((double)currentHealth / 100)), 44), new Rectangle(0, 45, healthBar.Width, 44), Color.Red);
-
-                spriteBatch.Draw(healthBar, new Rectangle((int)(Window.ClientBounds.Width / 2 - healthBar.Width / 2), 30, healthBar.Width, 44), new Rectangle(0, 0, healthBar.Width, 44), Color.White);
 
                 if (currentHealth <= 0)
                 {
