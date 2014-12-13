@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
@@ -37,7 +36,9 @@ namespace AlpacaWithBonnets
 
         Texture2D buttonImage;
 
-        Map currentMap;
+        // Window height and width at dead center
+        int centerWidth;
+        int centerHeight;
 
         public GameStates(Game1 content)
         {
@@ -65,6 +66,9 @@ namespace AlpacaWithBonnets
         // Change what's drawn based on the current game state
         public void DrawState(TheGameStates currentState, SpriteFont gameFont, SpriteBatch spriteBatch)
         {
+            centerWidth = content.GraphicsDevice.Viewport.Width / 2;
+            centerHeight = content.GraphicsDevice.Viewport.Height / 2;
+
             switch (currentState)
             {
                 case TheGameStates.Start:
@@ -74,57 +78,51 @@ namespace AlpacaWithBonnets
                     string instructions = "Use A and D to move left and right, W to jump";
 
                     // Print all of the different statements
-                    spriteBatch.DrawString(gameFont, title, new Vector2(50, 20), Color.Black);
-                    spriteBatch.DrawString(gameFont, goalOfGame, new Vector2(50, 35), Color.Black);
-                    spriteBatch.DrawString(gameFont, instructions, new Vector2(50, 50), Color.Black);
+                    spriteBatch.DrawString(gameFont, title, new Vector2(centerWidth - (int)title.Length * 4, centerHeight - 100), Color.Black);
+                    spriteBatch.DrawString(gameFont, goalOfGame, new Vector2(centerWidth - (int)goalOfGame.Length * 4, centerHeight + 75), Color.Black);
+                    spriteBatch.DrawString(gameFont, instructions, new Vector2(centerWidth - (int)instructions.Length * 4, centerHeight + 100), Color.Black);
 
                     // Draw all the buttons
                     play.Draw();
-                    play.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2 - 50);
+                    play.ButtonLocation(centerWidth - 170 / 2, centerHeight - 50);
 
                     exit.Draw();
-                    exit.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2);
+                    exit.ButtonLocation(centerWidth - 170 / 2, centerHeight);
                     
                     break;
 
                 case TheGameStates.Pause:
                     //Make the statements for the pause
-                    string pause = "Pause Game";
-                    string goBack = "Press Enter to go back to Game";
-                    string startMenu = "Press S to go back to Start";
+                    string pause = "Paused Game";
 
                     // Print the statements to the menu
-                    spriteBatch.DrawString(gameFont, pause, new Vector2(50, 20), Color.Black);
-                    spriteBatch.DrawString(gameFont, goBack, new Vector2(50, 35), Color.Black);
-                    spriteBatch.DrawString(gameFont, startMenu, new Vector2(50, 50), Color.Black);
+                    spriteBatch.DrawString(gameFont, pause, new Vector2(centerWidth - (int)pause.Length * 4, centerHeight - 100), Color.Black);
 
                     // Draw all the buttons
                     returnToGame.Draw();
-                    returnToGame.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2 - 50);
+                    returnToGame.ButtonLocation(centerWidth - 170 / 2, centerHeight - 50);
 
                     restartGame.Draw();
-                    restartGame.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2);
+                    restartGame.ButtonLocation(centerWidth - 170 / 2, centerHeight);
 
                     exit.Draw();
-                    exit.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2 + 50);
+                    exit.ButtonLocation(centerWidth - 170 / 2, centerHeight + 50);
 
                     break;
 
                 case TheGameStates.End:
                     // Make the statements to print
                     string gameOver = "Game Over";
-                    string restart = "Press enter to go back to start";
 
                     //Print the statements
-                    spriteBatch.DrawString(gameFont, gameOver, new Vector2(50, 20), Color.Black);
-                    spriteBatch.DrawString(gameFont, restart, new Vector2(50, 35), Color.Black);
-
+                    spriteBatch.DrawString(gameFont, gameOver, new Vector2(centerWidth - (int)gameOver.Length * 4, centerHeight - 100), Color.Black);
+      
                     // Draw all the buttons
                     playAgain.Draw();
-                    playAgain.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2 - 50);
+                    playAgain.ButtonLocation(centerWidth - 170 / 2, centerHeight - 50);
 
                     exit.Draw();
-                    exit.ButtonLocation(content.GraphicsDevice.Viewport.Width / 2 - 50, content.GraphicsDevice.Viewport.Height / 2);
+                    exit.ButtonLocation(centerWidth - 170 / 2, centerHeight);
 
                     break;
             }

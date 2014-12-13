@@ -56,8 +56,18 @@ namespace AlpacaWithBonnets
                 levelInput.Close();
             }
 
+            //Loops
+            //Determine what type of Tile each member of the array is based on the .txt file
+            for (int i = 0; i < width; i++)
+            {
+                for (int j = 0; j < height; j++)
+                {
+                    inputToTile[i, j] = lines[j][i];
+                }
+            }
 
             //Converts text file into map
+            // Change so that there isn't a different class for each tile. MY
             try
             {
                 for (int i = 0; i < width; i++)

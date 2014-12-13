@@ -39,7 +39,7 @@ namespace AlpacaWithBonnets
 
             textLocation = new Vector2();
             textLocation.Y = y + location.Height / 4;
-            textLocation.X = x + location.Width / 4;
+            textLocation.X = x + location.Width / 4 - 15;
         }
 
         // Set the text for the button

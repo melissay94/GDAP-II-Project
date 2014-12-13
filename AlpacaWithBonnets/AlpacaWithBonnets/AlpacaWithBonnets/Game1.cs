@@ -28,6 +28,8 @@ namespace AlpacaWithBonnets
         KeyboardState keyState;
         KeyboardState prevKeyState;
 
+        Texture2D gameBackground;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -59,9 +61,10 @@ namespace AlpacaWithBonnets
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            gameBackground = this.Content.Load<Texture2D>("background");
             gameFont = this.Content.Load<SpriteFont>("gameFont");
             gameState.LoadButtons(gameFont, spriteBatch);
-            firstLevel.LoadMap("firstLevel", Content);
+            firstLevel.LoadMap("firstLevel.txt", Content);
         }
 
         /// <summary>
@@ -100,13 +103,25 @@ namespace AlpacaWithBonnets
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.AliceBlue);
+            Rectangle backgroundRect = new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
 
             spriteBatch.Begin();
 
+            // Make the maps for when in the game state
+            if (gameState.CurrentState == TheGameStates.Game)
+            {
+                Vector2 pos = new Vector2(0f, 0f);
+                firstLevel.Draw(spriteBatch, pos);
+            }
+
+            // Make the background for the menus
+            else if (gameState.CurrentState == TheGameStates.Start || gameState.CurrentState == TheGameStates.Pause || gameState.CurrentState == TheGameStates.End)
+            {
+                spriteBatch.Draw(gameBackground, backgroundRect, Color.White);
+            }
+
             gameState.DrawState(gameState.CurrentState, gameFont, spriteBatch);
 
-            Vector2 pos = new Vector2(0f,0f);
-            firstLevel.Draw(spriteBatch, pos);
             spriteBatch.End();
 
             base.Draw(gameTime);
