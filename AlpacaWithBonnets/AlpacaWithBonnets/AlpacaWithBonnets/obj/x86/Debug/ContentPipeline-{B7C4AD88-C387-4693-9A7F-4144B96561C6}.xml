@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\gameFont.xnb</Output>
-      <Time>2014-12-12T12:57:02.9733899-05:00</Time>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\gameFont.xnb</Output>
+      <Time>2014-12-13T08:42:19.1413401-05:00</Time>
     </Item>
     <Item>
       <Source>button.png</Source>
@@ -16,8 +16,89 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\button.xnb</Output>
-      <Time>2014-12-12T13:11:00.4863725-05:00</Time>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\button.xnb</Output>
+      <Time>2014-12-13T08:42:19.1397249-05:00</Time>
+    </Item>
+    <Item>
+      <Source>background.png</Source>
+      <Name>background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\background.xnb</Output>
+      <Time>2014-12-13T11:52:13.0814651-05:00</Time>
+    </Item>
+    <Item>
+      <Source>dirt.png</Source>
+      <Name>dirt</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\dirt.xnb</Output>
+      <Time>2014-12-13T11:51:37.2110701-05:00</Time>
+    </Item>
+    <Item>
+      <Source>goal.png</Source>
+      <Name>goal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\goal.xnb</Output>
+      <Time>2014-12-13T11:51:55.8298032-05:00</Time>
+    </Item>
+    <Item>
+      <Source>grass.png</Source>
+      <Name>grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\grass.xnb</Output>
+      <Time>2014-12-13T11:52:40.4224701-05:00</Time>
+    </Item>
+    <Item>
+      <Source>platform.png</Source>
+      <Name>platform</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\platform.xnb</Output>
+      <Time>2014-12-13T11:52:52.3250268-05:00</Time>
+    </Item>
+    <Item>
+      <Source>rock.png</Source>
+      <Name>rock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\rock.xnb</Output>
+      <Time>2014-12-13T11:53:14.9671748-05:00</Time>
+    </Item>
+    <Item>
+      <Source>sand.png</Source>
+      <Name>sand</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\sand.xnb</Output>
+      <Time>2014-12-13T11:53:04.269239-05:00</Time>
+    </Item>
+    <Item>
+      <Source>sky.png</Source>
+      <Name>sky</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\sky.xnb</Output>
+      <Time>2014-12-13T11:53:25.6061441-05:00</Time>
+    </Item>
+    <Item>
+      <Source>water.png</Source>
+      <Name>water</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\water.xnb</Output>
+      <Time>2014-12-13T11:53:35.6356149-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -26,10 +107,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnetsContent\</RootDirectory>
-      <LoggerRootDirectory>d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\</LoggerRootDirectory>
-      <IntermediateDirectory>d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnetsContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -57,8 +138,8 @@
         <Value>2011-09-01T16:22:30-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-12-12T12:08:01.5332623-05:00</Value>
+        <Key>C:\windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2014-10-19T20:35:50.3131044-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

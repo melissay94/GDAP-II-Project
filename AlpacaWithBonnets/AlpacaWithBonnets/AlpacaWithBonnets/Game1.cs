@@ -23,6 +23,7 @@ namespace AlpacaWithBonnets
         SpriteFont gameFont;
 
         GameStates gameState;
+        Map firstLevel;
 
         KeyboardState keyState;
         KeyboardState prevKeyState;
@@ -44,6 +45,7 @@ namespace AlpacaWithBonnets
         protected override void Initialize()
         {
             gameState.CurrentState = TheGameStates.Start;
+            firstLevel = new Map(16, 10);
 
             base.Initialize();
         }
@@ -59,6 +61,7 @@ namespace AlpacaWithBonnets
 
             gameFont = this.Content.Load<SpriteFont>("gameFont");
             gameState.LoadButtons(gameFont, spriteBatch);
+            firstLevel.LoadMap("firstLevel", Content);
         }
 
         /// <summary>
@@ -102,6 +105,8 @@ namespace AlpacaWithBonnets
 
             gameState.DrawState(gameState.CurrentState, gameFont, spriteBatch);
 
+            Vector2 pos = new Vector2(0f,0f);
+            firstLevel.Draw(spriteBatch, pos);
             spriteBatch.End();
 
             base.Draw(gameTime);

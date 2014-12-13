@@ -6,3 +6,20 @@ d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaW
 d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.exe
 d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.pdb
 d:\users\may4028\documents\visual studio 2012\Projects\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\button.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\gameFont.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\button.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\AlpacaWithBonnets.exe
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\AlpacaWithBonnets.pdb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.csprojResolveAssemblyReference.cache
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.exe
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.pdb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\background.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\dirt.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\goal.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\grass.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\platform.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\rock.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\sand.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\sky.xnb
+C:\Users\Melissa\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\water.xnb

@@ -37,6 +37,8 @@ namespace AlpacaWithBonnets
 
         Texture2D buttonImage;
 
+        Map currentMap;
+
         public GameStates(Game1 content)
         {
             this.content = content;
