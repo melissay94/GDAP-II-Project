@@ -1,0 +1,4 @@
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.csprojResolveAssemblyReference.cache
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.Form1.resources
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.Properties.Resources.resources
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.csproj.GenerateResource.Cache

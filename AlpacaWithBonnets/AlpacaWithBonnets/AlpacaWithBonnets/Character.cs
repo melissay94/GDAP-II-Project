@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -19,6 +20,9 @@ namespace AlpacaWithBonnets
         bool isJumping;
         int jumpSpeed;
         float startY, startX;
+
+        int health;
+        int power;
 
         Vector2 origin = new Vector2();
 
@@ -38,6 +42,7 @@ namespace AlpacaWithBonnets
             startY = ObjectPosY;
 
             totalScore = 0;
+            health = 100;
 
         }
 
@@ -58,6 +63,12 @@ namespace AlpacaWithBonnets
         {
             get { return totalScore; }
             set { totalScore = value; }
+        }
+
+        public int TotalHealth
+        {
+            get { return health; }
+            set { health = value; }
         }
 
         public void LoadCharacter(Game1 content, String character)
@@ -120,6 +131,24 @@ namespace AlpacaWithBonnets
                     isJumping = true;
                     jumpSpeed = -18;
                 }
+            }
+        }
+
+        // Method for loading from the external
+        public void Load(string filename)
+        {
+            using (var reader = new BinaryReader(File.OpenRead(filename)))
+            {
+                health = reader.ReadInt32();
+                power = reader.ReadInt32();
+
+                byte r, g, b, a;
+                r = reader.ReadByte();
+                g = reader.ReadByte();
+                b = reader.ReadByte();
+                a = reader.ReadByte();
+
+                MyColor = Color.FromNonPremultiplied(r, g, b, a);
             }
         }
 

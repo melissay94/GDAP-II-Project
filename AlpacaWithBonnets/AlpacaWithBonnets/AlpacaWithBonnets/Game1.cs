@@ -67,6 +67,8 @@ namespace AlpacaWithBonnets
             thirdLevel = new Map(26, 10);
 
             mainCharacter = new Character(100, 100);
+       //     mainCharacter.Load("jimmy.alpaca");
+
             mainEnemy = new Enemy(500, 275, 75, 75);
 
             generatedCoins = new List<Collectible>();
@@ -136,6 +138,11 @@ namespace AlpacaWithBonnets
                 mainCharacter.HandleCharacterMovement(gameTime);
                 mainEnemy.EnemyMovement(gameTime);
                 GameCollision(gameTime);
+
+                if (mainCharacter.TotalHealth == 0)
+                {
+                    gameState.CurrentState = TheGameStates.End;
+                }
             }
            
 
@@ -156,7 +163,7 @@ namespace AlpacaWithBonnets
 
             if (mainCharacter.ObjectSquare.Intersects(mainEnemy.ObjectSquare))
             {
-                gameState.CurrentState = TheGameStates.End;
+                mainCharacter.TotalHealth = mainCharacter.TotalHealth - 15;
             }
 
             foreach (Collectible levelCoin in generatedCoins)
@@ -232,7 +239,7 @@ namespace AlpacaWithBonnets
                     levelCoin.Draw(spriteBatch, coin);
                 }
 
-                string stats = "Level: " + levelCount + " High Score: " + mainCharacter.TotalScore;
+                string stats = "Level: " + levelCount + " High Score: " + mainCharacter.TotalScore + " Total Health: " + mainCharacter.TotalHealth;
                 spriteBatch.DrawString(gameFont, stats, Vector2.Zero, Color.Black, 0, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
 
                 graphics.PreferredBackBufferWidth = 26 * 50;
