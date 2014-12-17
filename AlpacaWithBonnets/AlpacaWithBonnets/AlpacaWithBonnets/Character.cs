@@ -9,48 +9,39 @@ using Microsoft.Xna.Framework.Input;
 namespace AlpacaWithBonnets
 {
 
-    class Character 
+    class Character : MovingGameObject
     {
 
-        Game1 content;
-        SpriteBatch spriteBatch;
-
         Texture2D characterImage;
-        float timer, interval;
-        int currentFrame, charWidth, charHeight, charSpeed;
-        Rectangle scrRect;
-        Vector2 position;
-        Vector2 origin;
+        float scale = 1.0f;
+
+        int charWidth, charHeight;
+        bool isJumping;
+        int jumpSpeed;
+        float startY, startX;
+
+        Vector2 origin = new Vector2();
 
         KeyboardState keyState;
-        KeyboardState prevKeyState;
 
-        public Character(int currentFrame, int charWidth, int charHeight)
+        int totalScore;
+
+        public Character(int charWidth, int charHeight) 
+            : base (0, 250, charWidth, charHeight)
         {
-           
-            timer = 0f;
-            interval = 200f;
-
-            this.currentFrame = currentFrame;
-            currentFrame = 0;
-
             this.charWidth = charWidth;
-            charWidth = 100;
-
             this.charHeight = charHeight;
-            charHeight = 100;
+            ObjectSpeed = 150;
 
-            charSpeed = 50;
+            isJumping = false;
+            startX = ObjectPosX;
+            startY = ObjectPosY;
+
+            totalScore = 0;
 
         }
 
         // Properties 
-        public Vector2 Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
-
         public Vector2 Origin
         {
             get { return origin; }
@@ -63,102 +54,78 @@ namespace AlpacaWithBonnets
             set { characterImage = value; }
         }
 
-        public Rectangle Source
+        public int TotalScore
         {
-            get { return scrRect; }
-            set { scrRect = value; }
+            get { return totalScore; }
+            set { totalScore = value; }
         }
 
-        public void LoadCharacter(Game1 content, Texture2D charImage)
+        public void LoadCharacter(Game1 content, String character)
         {
-            this.characterImage = charImage;
-            charImage = content.Content.Load<Texture2D>("walkcycle");
-            
+
+            characterImage = content.Content.Load<Texture2D>(character);
         }
 
         public void HandleCharacterMovement(GameTime gameTime)
         {
-            prevKeyState = keyState;
             keyState = Keyboard.GetState();
 
-            scrRect = new Rectangle(currentFrame * charWidth, 0, charWidth, charHeight);
-
-            if (keyState.GetPressedKeys().Length == 0)
-            {
-                if (currentFrame == 0 || currentFrame == 2)
-                {
-                    currentFrame = 1;
-                }
-                if (currentFrame == 3 || currentFrame == 5)
-                {
-                    currentFrame = 4;
-                }
-            }
-
-            // Check for key presses 
+            // Movement
             if (keyState.IsKeyDown(Keys.A))
             {
-                GoLeft(gameTime);
+                ObjectPosX -= (ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
-            else if (keyState.IsKeyDown(Keys.D))
+            if (keyState.IsKeyDown(Keys.D))
             {
-                GoRight(gameTime);
-            }
-
-            origin = new Vector2(scrRect.Width / 2, scrRect.Height / 2);
-        }
-
-        // Methods for which direction has which frames
-        public void GoLeft(GameTime gameTime)
-        {
-            if (keyState != prevKeyState)
-            {
-                currentFrame = 0;
+                ObjectPosX += (ObjectSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             }
 
-            timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-            if (timer > interval)
+            // Jumping code
+            if (isJumping && keyState.IsKeyDown(Keys.A))
             {
-                currentFrame++;
-
-                if (currentFrame > 2)
+                ObjectPosY += jumpSpeed;
+                ObjectPosX -= Math.Abs(jumpSpeed);
+                jumpSpeed += 1;
+                if (ObjectPosY > startY)
                 {
-                    currentFrame = 0;
+                    ObjectPosY = startY;
+                    isJumping = false;
                 }
-
-                timer = 0f;
             }
-        }
-
-        public void GoRight(GameTime gameTime)
-        {
-            if (keyState != prevKeyState)
+            else if (isJumping && keyState.IsKeyDown(Keys.D))
             {
-                currentFrame = 3;
-            }
-
-            timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-
-            if (timer > interval)
-            {
-                currentFrame++;
-
-                if (currentFrame > 5)
+                ObjectPosY += jumpSpeed;
+                ObjectPosX += Math.Abs(jumpSpeed);
+                jumpSpeed += 1;
+                if (ObjectPosY > startY)
                 {
-                    currentFrame = 3;
+                    ObjectPosY = startY;
+                    isJumping = false;
                 }
-
-                timer = 0f;
+            }
+            else if (isJumping)
+            {
+                ObjectPosY += jumpSpeed;
+                jumpSpeed += 1;
+                if (ObjectPosY > startY)
+                {
+                    ObjectPosY = startY;
+                    isJumping = false;
+                }
+            }
+            else
+            {
+                if (keyState.IsKeyDown(Keys.W))
+                {
+                    isJumping = true;
+                    jumpSpeed = -18;
+                }
             }
         }
 
         public void DrawCharacter(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(characterImage, scrRect, Color.White);
+            spriteBatch.Draw(characterImage, ObjectSquare, Color.White);
         }
-
-        // Walk cycle link: http://www.dreamincode.net/forums/topic/194878-xna-animated-sprite/
-
     }
 }

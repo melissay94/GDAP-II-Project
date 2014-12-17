@@ -18,6 +18,7 @@ namespace AlpacaWithBonnets
     {
         private Tile[,] level;
         private int width, height;
+        private int gameWidth;
         public const int SIZE = 50;
 
           //Constructor
@@ -26,11 +27,19 @@ namespace AlpacaWithBonnets
             level = new Tile[width, height];
             this.width = width;
             this.height = height;
+
+            gameWidth = width * Tile.SIZE;
         }
 
         public Tile[,] NewMap
         {
             get { return level; }
+        }
+
+        public int GameWidth
+        {
+            get { return gameWidth; }
+            set { gameWidth = value; }
         }
 
         //Methods
@@ -106,6 +115,16 @@ namespace AlpacaWithBonnets
                         else if (inputToTile[i, j] == 'W') //Water 
                         {
                             level[i, j] = new Tile(new Vector2(i * SIZE, j * SIZE), contentRef, "water");
+                            level[i, j].IsPassable = true;
+                        }
+                        else if (inputToTile[i,j] == 'C') //Concrete 
+                        {
+                            level[i, j] = new Tile(new Vector2(i * SIZE, j * SIZE), contentRef, "concrete");
+                        }
+                        else if (inputToTile[i, j] == 'T') // Brick
+                        {
+                            level[i, j] = new Tile(new Vector2(i * SIZE, j * SIZE), contentRef, "brick");
+                            level[i, j].IsPassable = true;
                         }
                     }
                 }

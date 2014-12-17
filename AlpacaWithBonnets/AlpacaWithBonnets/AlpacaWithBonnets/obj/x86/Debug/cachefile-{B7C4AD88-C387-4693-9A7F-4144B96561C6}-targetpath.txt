@@ -10,3 +10,10 @@ Content\sand.xnb
 Content\sky.xnb
 Content\water.xnb
 Content\walkcycle.xnb
+Content\Enemy1.xnb
+Content\WalkG1.xnb
+Content\coin.xnb
+Content\bonnetGoal.xnb
+Content\fedoraGoal.xnb
+Content\brick.xnb
+Content\concrete.xnb

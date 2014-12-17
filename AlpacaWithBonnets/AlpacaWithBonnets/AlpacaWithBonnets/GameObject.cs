@@ -12,6 +12,7 @@ namespace AlpacaWithBonnets
     {
         // Rectangle for objects
         private Rectangle objectSquare;
+
         // Postition
         private float x;
         private float y;

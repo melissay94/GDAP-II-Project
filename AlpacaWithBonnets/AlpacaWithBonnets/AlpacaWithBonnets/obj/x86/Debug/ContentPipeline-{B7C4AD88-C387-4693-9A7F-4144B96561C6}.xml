@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\gameFont.xnb</Output>
-      <Time>2014-12-13T16:08:13.6186509-05:00</Time>
+      <Time>2014-12-17T12:06:56.1349443-05:00</Time>
     </Item>
     <Item>
       <Source>button.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\button.xnb</Output>
-      <Time>2014-12-13T16:08:13.6156821-05:00</Time>
+      <Time>2014-12-17T12:06:56.1249081-05:00</Time>
     </Item>
     <Item>
       <Source>background.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2014-12-13T16:08:13.614692-05:00</Time>
+      <Time>2014-12-17T12:06:56.0978856-05:00</Time>
     </Item>
     <Item>
       <Source>dirt.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\dirt.xnb</Output>
-      <Time>2014-12-13T16:08:13.6166507-05:00</Time>
+      <Time>2014-12-17T12:06:56.1329107-05:00</Time>
     </Item>
     <Item>
       <Source>goal.png</Source>
@@ -44,7 +44,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\goal.xnb</Output>
-      <Time>2014-12-13T16:08:13.6206508-05:00</Time>
+      <Time>2014-12-17T12:06:56.1469401-05:00</Time>
     </Item>
     <Item>
       <Source>grass.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\grass.xnb</Output>
-      <Time>2014-12-13T16:08:13.6216525-05:00</Time>
+      <Time>2014-12-17T12:06:56.1479517-05:00</Time>
     </Item>
     <Item>
       <Source>platform.png</Source>
@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\platform.xnb</Output>
-      <Time>2014-12-13T16:08:13.6296535-05:00</Time>
+      <Time>2014-12-17T12:06:56.1549293-05:00</Time>
     </Item>
     <Item>
       <Source>rock.png</Source>
@@ -71,7 +71,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\rock.xnb</Output>
-      <Time>2014-12-13T16:08:13.6296535-05:00</Time>
+      <Time>2014-12-17T12:06:56.1559277-05:00</Time>
     </Item>
     <Item>
       <Source>sand.png</Source>
@@ -80,7 +80,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\sand.xnb</Output>
-      <Time>2014-12-13T16:08:13.6306534-05:00</Time>
+      <Time>2014-12-17T12:06:56.1569748-05:00</Time>
     </Item>
     <Item>
       <Source>sky.png</Source>
@@ -89,7 +89,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\sky.xnb</Output>
-      <Time>2014-12-13T16:08:13.6316533-05:00</Time>
+      <Time>2014-12-17T12:06:56.192987-05:00</Time>
     </Item>
     <Item>
       <Source>water.png</Source>
@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\water.xnb</Output>
-      <Time>2014-12-13T16:08:13.6326533-05:00</Time>
+      <Time>2014-12-17T12:06:56.1959564-05:00</Time>
     </Item>
     <Item>
       <Source>walkcycle.png</Source>
@@ -107,7 +107,70 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\walkcycle.xnb</Output>
-      <Time>2014-12-13T18:10:24.6063488-05:00</Time>
+      <Time>2014-12-17T12:06:56.194958-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Enemy1.png</Source>
+      <Name>Enemy1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\Enemy1.xnb</Output>
+      <Time>2014-12-17T13:49:02.5558565-05:00</Time>
+    </Item>
+    <Item>
+      <Source>WalkG1.png</Source>
+      <Name>WalkG1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\WalkG1.xnb</Output>
+      <Time>2014-12-17T13:53:26.7760363-05:00</Time>
+    </Item>
+    <Item>
+      <Source>coin.png</Source>
+      <Name>coin</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\coin.xnb</Output>
+      <Time>2014-12-17T14:16:44.409648-05:00</Time>
+    </Item>
+    <Item>
+      <Source>bonnetGoal.png</Source>
+      <Name>bonnetGoal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\bonnetGoal.xnb</Output>
+      <Time>2014-12-17T15:58:38.7191423-05:00</Time>
+    </Item>
+    <Item>
+      <Source>fedoraGoal.png</Source>
+      <Name>fedoraGoal</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\fedoraGoal.xnb</Output>
+      <Time>2014-12-17T15:58:30.8014737-05:00</Time>
+    </Item>
+    <Item>
+      <Source>brick.png</Source>
+      <Name>brick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\brick.xnb</Output>
+      <Time>2014-12-17T15:39:19.7043551-05:00</Time>
+    </Item>
+    <Item>
+      <Source>concrete.png</Source>
+      <Name>concrete</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\concrete.xnb</Output>
+      <Time>2014-12-17T15:38:39.0592549-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -148,7 +211,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2014-12-13T16:06:56.6063135-05:00</Value>
+        <Value>2014-12-17T12:08:47.6927812-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

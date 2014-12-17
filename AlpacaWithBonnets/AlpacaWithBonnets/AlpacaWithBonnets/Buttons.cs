@@ -74,7 +74,7 @@ namespace AlpacaWithBonnets
         // Draw the button based on mouse location
         public void Draw()
         {
-            spriteBatch.Draw(image, location, Color.Purple);
+            spriteBatch.Draw(image, location, Color.MediumPurple);
 
             spriteBatch.DrawString(font, text, textLocation, Color.Black);
 

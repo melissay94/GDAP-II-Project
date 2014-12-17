@@ -129,7 +129,7 @@ namespace AlpacaWithBonnets
         }
 
         // Check for the changing between states based on buttons pressed in the menus
-        public void ChangeState(TheGameStates currentState, KeyboardState keyState, KeyboardState prevKeyState, GameTime gameTime)
+        public void ChangeState(TheGameStates currentState, KeyboardState keyState, KeyboardState prevKeyState, Character mainCharacter, GameTime gameTime)
         {
             // Allow use of mouse during menu states
             content.IsMouseVisible = true;
@@ -175,7 +175,8 @@ namespace AlpacaWithBonnets
                         }
                         else if (restartGame.ButtonUpdate())
                         {
-                            CurrentState = TheGameStates.Start;
+                            ResetGame(mainCharacter);
+                            CurrentState = TheGameStates.Game;
                         }
                         else if (exit.ButtonUpdate())
                         {
@@ -190,15 +191,24 @@ namespace AlpacaWithBonnets
                         // Check for when buttons are clicked
                         if (playAgain.ButtonUpdate())
                         {
-                            CurrentState = TheGameStates.Start;
+                            ResetGame(mainCharacter);
+                            CurrentState = TheGameStates.Game;
                         }
                         else if (exit.ButtonUpdate())
                         {
                             content.Exit();
                         }
+
                         break;
                     }
             }
+        }
+
+        public void ResetGame(Character mainCharacter)
+        {
+            mainCharacter.TotalScore = 0;
+            mainCharacter.ObjectPosX = 0;
+            mainCharacter.ObjectPosY = 250;
         }
 
         // Used by the handleStateInput method to make sure p was properly pressed

@@ -23,12 +23,27 @@ namespace AlpacaWithBonnets
         SpriteFont gameFont;
 
         GameStates gameState;
+
         Map firstLevel;
+        Map secondLevel;
+        Map thirdLevel;
+        int levelCount;
+
+        Character mainCharacter;
+        Enemy mainEnemy;
+
+        // Coins per level
+        Texture2D coin;
+        List<Collectible> generatedCoins;
 
         KeyboardState keyState;
         KeyboardState prevKeyState;
 
         Texture2D gameBackground;
+
+        Goal firstGoal;
+        Goal secondGoal;
+        Goal thirdGoal;
 
         public Game1()
         {
@@ -47,7 +62,20 @@ namespace AlpacaWithBonnets
         protected override void Initialize()
         {
             gameState.CurrentState = TheGameStates.Start;
-            firstLevel = new Map(16, 10);
+            firstLevel = new Map(26, 10);
+            secondLevel = new Map(26, 10);
+            thirdLevel = new Map(26, 10);
+
+            mainCharacter = new Character(100, 100);
+            mainEnemy = new Enemy(500, 275, 75, 75);
+
+            generatedCoins = new List<Collectible>();
+            generatedCoins.Add(new Collectible(100, 100));
+            generatedCoins.Add(new Collectible(400, 150));
+
+            firstGoal = new Goal();
+            secondGoal = new Goal();
+            thirdGoal = new Goal();
 
             base.Initialize();
         }
@@ -64,7 +92,18 @@ namespace AlpacaWithBonnets
             gameBackground = this.Content.Load<Texture2D>("background");
             gameFont = this.Content.Load<SpriteFont>("gameFont");
             gameState.LoadButtons(gameFont, spriteBatch);
+
             firstLevel.LoadMap("firstLevel.txt", Content);
+            secondLevel.LoadMap("secondLevel.txt", Content);
+            thirdLevel.LoadMap("thirdLevel.txt", Content);
+
+            mainCharacter.LoadCharacter(this, "WalkG1");
+            mainEnemy.LoadEnemy(this);
+            coin = this.Content.Load<Texture2D>("coin");
+
+            firstGoal.LoadGoal(this, "goal");
+            secondGoal.LoadGoal(this, "fedoraGoal");
+            thirdGoal.LoadGoal(this, "bonnetGoal");
         }
 
         /// <summary>
@@ -90,10 +129,64 @@ namespace AlpacaWithBonnets
             prevKeyState = keyState;
             keyState = Keyboard.GetState();
 
-            gameState.ChangeState(gameState.CurrentState, keyState, prevKeyState, gameTime);
+            gameState.ChangeState(gameState.CurrentState, keyState, prevKeyState, mainCharacter, gameTime);
+
+            if (gameState.CurrentState == TheGameStates.Game)
+            {
+                mainCharacter.HandleCharacterMovement(gameTime);
+                mainEnemy.EnemyMovement(gameTime);
+                GameCollision(gameTime);
+            }
            
 
             base.Update(gameTime);
+        }
+
+        public void GameCollision(GameTime gameTime)
+        {
+            if (mainCharacter.ObjectPosX + mainCharacter.ObjectSquare.Width >= GraphicsDevice.Viewport.Width)
+            {
+                mainCharacter.ObjectPosX = GraphicsDevice.Viewport.Width - mainCharacter.ObjectSquare.Width;
+            }
+
+            if (mainCharacter.ObjectPosX + mainCharacter.ObjectSquare.Width <= 0)
+            {
+                mainCharacter.ObjectPosX = 1;
+            }
+
+            if (mainCharacter.ObjectSquare.Intersects(mainEnemy.ObjectSquare))
+            {
+                gameState.CurrentState = TheGameStates.End;
+            }
+
+            foreach (Collectible levelCoin in generatedCoins)
+            {
+                if (levelCoin.ActiveCoin && mainCharacter.ObjectSquare.Intersects(levelCoin.ObjectSquare))
+                {
+                    levelCoin.ActiveCoin = false;
+                    mainCharacter.TotalScore += 50;
+                }
+            }
+
+            if (mainCharacter.ObjectSquare.Intersects(firstGoal.ObjectSquare))
+            {
+                firstGoal.ActiveGoal = false;
+                firstGoal.ObjectPosX = 27 * 50;
+                mainCharacter.ObjectPosY = 250;
+                mainCharacter.ObjectPosX = 0;
+            }
+            else if (mainCharacter.ObjectSquare.Intersects(secondGoal.ObjectSquare))
+            {
+                secondGoal.ActiveGoal = false;
+                secondGoal.ObjectPosX = 27 * 50;
+                mainCharacter.ObjectPosX = 0;
+                mainCharacter.ObjectPosY = 250;
+            }
+            else if (mainCharacter.ObjectSquare.Intersects(thirdGoal.ObjectSquare))
+            {
+                gameState.CurrentState = TheGameStates.End;
+            }
+            
         }
 
         /// <summary>
@@ -111,13 +204,47 @@ namespace AlpacaWithBonnets
             if (gameState.CurrentState == TheGameStates.Game)
             {
                 Vector2 pos = new Vector2(0f, 0f);
-                firstLevel.Draw(spriteBatch, pos);
+                if (firstGoal.ActiveGoal)
+                {
+                    firstLevel.Draw(spriteBatch, pos);
+                    firstGoal.DrawGoal(spriteBatch);
+                    levelCount = 1;
+                }
+                else if (secondGoal.ActiveGoal)
+                {
+                    secondLevel.Draw(spriteBatch, pos);
+                    secondGoal.DrawGoal(spriteBatch);
+                    levelCount = 2;
+                }
+                else if (thirdGoal.ActiveGoal)
+                {
+                    thirdLevel.Draw(spriteBatch, pos);
+                    thirdGoal.DrawGoal(spriteBatch);
+                    levelCount = 3;
+                }
+          
+
+                mainCharacter.DrawCharacter(spriteBatch);
+                mainEnemy.DrawEnemy(spriteBatch);
+
+                foreach (Collectible levelCoin in generatedCoins)
+                {
+                    levelCoin.Draw(spriteBatch, coin);
+                }
+
+                string stats = "Level: " + levelCount + " High Score: " + mainCharacter.TotalScore;
+                spriteBatch.DrawString(gameFont, stats, Vector2.Zero, Color.Black, 0, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
+
+                graphics.PreferredBackBufferWidth = 26 * 50;
+                graphics.ApplyChanges();
             }
 
             // Make the background for the menus
             else if (gameState.CurrentState == TheGameStates.Start || gameState.CurrentState == TheGameStates.Pause || gameState.CurrentState == TheGameStates.End)
             {
                 spriteBatch.Draw(gameBackground, backgroundRect, Color.White);
+                graphics.PreferredBackBufferWidth = 16 * 50;
+                graphics.ApplyChanges();
             }
 
             gameState.DrawState(gameState.CurrentState, gameFont, spriteBatch);

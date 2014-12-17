@@ -41,3 +41,10 @@ D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\A
 D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.exe
 D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\obj\x86\Debug\AlpacaWithBonnets.pdb
 D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\walkcycle.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\Enemy1.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\WalkG1.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\coin.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\bonnetGoal.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\fedoraGoal.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\brick.xnb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\AlpacaWithBonnets\AlpacaWithBonnets\bin\x86\Debug\Content\concrete.xnb

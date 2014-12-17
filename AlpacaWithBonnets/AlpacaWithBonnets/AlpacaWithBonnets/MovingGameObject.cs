@@ -18,6 +18,7 @@ namespace AlpacaWithBonnets
         public float ObjectSpeed
         {
             get { return objectSpeed; }
+            set { objectSpeed = value; }
         }
         public int Direction
         {
