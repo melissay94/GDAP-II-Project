@@ -2,3 +2,8 @@ D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\De
 D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.Form1.resources
 D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.Properties.Resources.resources
 D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.csproj.GenerateResource.Cache
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\bin\Debug\ExternalTool.exe.config
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\bin\Debug\ExternalTool.exe
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\bin\Debug\ExternalTool.pdb
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.exe
+D:\Users\may4028\Documents\GDAP-II-Project\AlpacaWithBonnets\ExternalTool\obj\Debug\ExternalTool.pdb

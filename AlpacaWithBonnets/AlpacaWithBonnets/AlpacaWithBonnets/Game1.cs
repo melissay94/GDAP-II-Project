@@ -142,7 +142,13 @@ namespace AlpacaWithBonnets
                 if (mainCharacter.TotalHealth == 0)
                 {
                     gameState.CurrentState = TheGameStates.End;
+                    firstGoal.ActiveGoal = true;
                 }
+            }
+
+            if (gameState.CurrentState == TheGameStates.Start || gameState.CurrentState == TheGameStates.End)
+            {
+                firstGoal.ActiveGoal = true;
             }
            
 
@@ -163,7 +169,7 @@ namespace AlpacaWithBonnets
 
             if (mainCharacter.ObjectSquare.Intersects(mainEnemy.ObjectSquare))
             {
-                mainCharacter.TotalHealth = mainCharacter.TotalHealth - 15;
+                mainCharacter.TotalHealth -= 1;
             }
 
             foreach (Collectible levelCoin in generatedCoins)
@@ -236,7 +242,10 @@ namespace AlpacaWithBonnets
 
                 foreach (Collectible levelCoin in generatedCoins)
                 {
-                    levelCoin.Draw(spriteBatch, coin);
+                    if (levelCoin.ActiveCoin)
+                    {
+                        levelCoin.Draw(spriteBatch, coin);
+                    }
                 }
 
                 string stats = "Level: " + levelCount + " High Score: " + mainCharacter.TotalScore + " Total Health: " + mainCharacter.TotalHealth;
