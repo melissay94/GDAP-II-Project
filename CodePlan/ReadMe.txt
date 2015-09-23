@@ -1,2 +1,0 @@
-Code Plan folder so that everyone has easy access to documents on what the others plans were as a reference for future use. 
-Will also help to keep the plan constant and let everyone know when documentation has changed. 
